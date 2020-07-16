@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,12 @@
 		0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */; };
 		0F16F3A324C03CBF00EBAEBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */; };
 		0F16F3A624C03CBF00EBAEBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F16F3A424C03CBF00EBAEBC /* LaunchScreen.storyboard */; };
+		0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3AD24C05DDB00EBAEBC /* UIColor+extensions.swift */; };
+		0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3AE24C05DDB00EBAEBC /* Images.swift */; };
+		0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3AF24C05DDB00EBAEBC /* Colors.swift */; };
+		0F16F3B524C0619B00EBAEBC /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F16F3B424C0619B00EBAEBC /* Roboto-Bold.ttf */; };
+		0F16F3B724C064E100EBAEBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3B624C064E100EBAEBC /* ViewController.swift */; };
+		0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3B824C07A5D00EBAEBC /* Device.swift */; };
 		D60D0BA82542C7C17A3B1067 /* Pods_VideoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +27,12 @@
 		0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F16F3A524C03CBF00EBAEBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F16F3A724C03CBF00EBAEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F16F3AD24C05DDB00EBAEBC /* UIColor+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
+		0F16F3AE24C05DDB00EBAEBC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		0F16F3AF24C05DDB00EBAEBC /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0F16F3B424C0619B00EBAEBC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		0F16F3B624C064E100EBAEBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F16F3B824C07A5D00EBAEBC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		32B97A7213B0A52C2FF26E6E /* Pods-VideoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.release.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.debug.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -60,12 +72,26 @@
 			isa = PBXGroup;
 			children = (
 				0F16F39924C03CBE00EBAEBC /* AppDelegate.swift */,
+				0F16F3B824C07A5D00EBAEBC /* Device.swift */,
 				0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */,
+				0F16F3B624C064E100EBAEBC /* ViewController.swift */,
 				0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */,
+				0F16F3B324C05E4700EBAEBC /* Resources */,
 				0F16F3A424C03CBF00EBAEBC /* LaunchScreen.storyboard */,
 				0F16F3A724C03CBF00EBAEBC /* Info.plist */,
 			);
 			path = VideoTracker;
+			sourceTree = "<group>";
+		};
+		0F16F3B324C05E4700EBAEBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F16F3B424C0619B00EBAEBC /* Roboto-Bold.ttf */,
+				0F16F3AF24C05DDB00EBAEBC /* Colors.swift */,
+				0F16F3AE24C05DDB00EBAEBC /* Images.swift */,
+				0F16F3AD24C05DDB00EBAEBC /* UIColor+extensions.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AC0CA41A4D7F8035B9F0BBEE /* Pods */ = {
@@ -74,7 +100,6 @@
 				E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */,
 				32B97A7213B0A52C2FF26E6E /* Pods-VideoTracker.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +173,7 @@
 			files = (
 				0F16F3A624C03CBF00EBAEBC /* LaunchScreen.storyboard in Resources */,
 				0F16F3A324C03CBF00EBAEBC /* Assets.xcassets in Resources */,
+				0F16F3B524C0619B00EBAEBC /* Roboto-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F16F3B724C064E100EBAEBC /* ViewController.swift in Sources */,
 				0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */,
+				0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */,
+				0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */,
 				0F16F39A24C03CBE00EBAEBC /* AppDelegate.swift in Sources */,
+				0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */,
+				0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
