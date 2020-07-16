@@ -8,5 +8,6 @@ target 'VideoTracker' do
   # Pods for VideoTracker
 
   pod 'SnapKit'
+  pod 'Hero'
 
 end
