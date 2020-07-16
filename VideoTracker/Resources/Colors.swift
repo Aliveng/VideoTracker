@@ -11,6 +11,6 @@ import UIKit
 
 extension UIColor {
     
- //   static let buttonColor = UIColor(hex: "F2F3F7")
-
+    static let unselectedColor = UIColor(hex: "a8a8a8")
+    
 }

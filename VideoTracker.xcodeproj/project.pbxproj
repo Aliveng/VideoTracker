@@ -15,10 +15,11 @@
 		0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3AE24C05DDB00EBAEBC /* Images.swift */; };
 		0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3AF24C05DDB00EBAEBC /* Colors.swift */; };
 		0F16F3B524C0619B00EBAEBC /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F16F3B424C0619B00EBAEBC /* Roboto-Bold.ttf */; };
-		0F16F3B724C064E100EBAEBC /* NewsLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3B624C064E100EBAEBC /* NewsLineViewController.swift */; };
+		0F16F3B724C064E100EBAEBC /* NewsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3B624C064E100EBAEBC /* NewsListController.swift */; };
 		0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3B824C07A5D00EBAEBC /* Device.swift */; };
-		0F16F3BB24C0880B00EBAEBC /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3BA24C0880B00EBAEBC /* NavigationView.swift */; };
 		0F16F3BD24C099AD00EBAEBC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */; };
+		0F16F3BF24C0A4A800EBAEBC /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */; };
+		0F16F3C124C0A64100EBAEBC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */; };
 		D60D0BA82542C7C17A3B1067 /* Pods_VideoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,10 +34,11 @@
 		0F16F3AE24C05DDB00EBAEBC /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0F16F3AF24C05DDB00EBAEBC /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0F16F3B424C0619B00EBAEBC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		0F16F3B624C064E100EBAEBC /* NewsLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLineViewController.swift; sourceTree = "<group>"; };
+		0F16F3B624C064E100EBAEBC /* NewsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListController.swift; sourceTree = "<group>"; };
 		0F16F3B824C07A5D00EBAEBC /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		0F16F3BA24C0880B00EBAEBC /* NavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		32B97A7213B0A52C2FF26E6E /* Pods-VideoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.release.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.debug.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,10 +79,11 @@
 			children = (
 				0F16F39924C03CBE00EBAEBC /* AppDelegate.swift */,
 				0F16F3B824C07A5D00EBAEBC /* Device.swift */,
-				0F16F3BA24C0880B00EBAEBC /* NavigationView.swift */,
 				0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */,
-				0F16F3B624C064E100EBAEBC /* NewsLineViewController.swift */,
+				0F16F3B624C064E100EBAEBC /* NewsListController.swift */,
+				0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */,
 				0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */,
+				0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */,
 				0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */,
 				0F16F3B324C05E4700EBAEBC /* Resources */,
 				0F16F3A424C03CBF00EBAEBC /* LaunchScreen.storyboard */,
@@ -232,10 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F16F3B724C064E100EBAEBC /* NewsLineViewController.swift in Sources */,
+				0F16F3B724C064E100EBAEBC /* NewsListController.swift in Sources */,
 				0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */,
-				0F16F3BB24C0880B00EBAEBC /* NavigationView.swift in Sources */,
+				0F16F3C124C0A64100EBAEBC /* SettingsViewController.swift in Sources */,
 				0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */,
+				0F16F3BF24C0A4A800EBAEBC /* CategoriesViewController.swift in Sources */,
 				0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */,
 				0F16F39A24C03CBE00EBAEBC /* AppDelegate.swift in Sources */,
 				0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */,
