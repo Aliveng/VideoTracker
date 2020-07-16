@@ -9,9 +9,9 @@
 import UIKit
 import SnapKit
 
+
 class ViewController: UIViewController {
 
-    
     override func loadView() {
     super.loadView()
         
@@ -24,5 +24,4 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
 }

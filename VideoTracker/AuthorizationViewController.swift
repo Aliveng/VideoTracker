@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+
 class AuthorizationViewController: UIViewController {
     
     lazy var backgroundImgView: UIImageView = {
@@ -58,10 +59,6 @@ class AuthorizationViewController: UIViewController {
         return view
     }()
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
     override func loadView() {
         super.loadView()
         
@@ -76,7 +73,6 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let topOffset = Device.isSmall() ? (view.frame.height / 3.5) : (view.frame.height / 3)
         
@@ -102,7 +98,6 @@ class AuthorizationViewController: UIViewController {
             item.right.equalToSuperview().offset(-30)
             item.bottom.equalToSuperview().inset(29)
         })
-        
     }
     
     @objc
@@ -110,6 +105,4 @@ class AuthorizationViewController: UIViewController {
         navigationController?.pushViewController(ViewController(), animated: true)
         print("Кнопка Авторизоваться")
     }
-    
 }
-
