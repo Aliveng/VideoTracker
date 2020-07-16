@@ -12,10 +12,10 @@ import SnapKit
 
 class NewsLineViewController: UIViewController {
     
-    lazy var bottomTapBar: NavigationView = {
-        let view = NavigationView(navigationController: self.navigationController!)
-        return view
-    }()
+//    lazy var bottomTapBar: NavigationView = {
+//        let view = NavigationView(navigationController: self.navigationController!)
+//        return view
+//    }()
 
     override func loadView() {
     super.loadView()
@@ -23,14 +23,14 @@ class NewsLineViewController: UIViewController {
         view.backgroundColor = .green
         navigationController?.navigationBar.isHidden = true
         
-        view.addSubview(bottomTapBar)
+      //  view.addSubview(bottomTapBar)
         
-        bottomTapBar.snp.makeConstraints({ item in
-            item.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            item.height.equalTo(56)
-            item.left.equalToSuperview()
-            item.right.equalToSuperview()
-        })
+//        bottomTapBar.snp.makeConstraints({ item in
+//            item.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+//            item.height.equalTo(56)
+//            item.left.equalToSuperview()
+//            item.right.equalToSuperview()
+//        })
         
     }
     

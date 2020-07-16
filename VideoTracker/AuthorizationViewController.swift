@@ -102,7 +102,16 @@ class AuthorizationViewController: UIViewController {
     
     @objc
     private func didTapAuthorization() {
-        navigationController?.pushViewController(NewsLineViewController(), animated: true)
+        
+        let newsListController = NewsLineViewController()
+        newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
+        let chatViewController = ChatViewController()
+        chatViewController.tabBarItem = UITabBarItem.init(title: "Чат", image: .chat, tag: 3)
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.setViewControllers([newsListController, chatViewController], animated: true)
+        
+        navigationController?.pushViewController(tabBarController, animated: true)
         print("Кнопка Авторизоваться")
     }
 }
