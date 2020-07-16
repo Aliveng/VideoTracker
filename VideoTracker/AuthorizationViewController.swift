@@ -102,7 +102,7 @@ class AuthorizationViewController: UIViewController {
     
     @objc
     private func didTapAuthorization() {
-        navigationController?.pushViewController(ViewController(), animated: true)
+        navigationController?.pushViewController(NewsLineViewController(), animated: true)
         print("Кнопка Авторизоваться")
     }
 }
