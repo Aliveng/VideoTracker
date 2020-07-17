@@ -6,14 +6,14 @@
 //  Copyright © 2020 Татьяна Севостьянова. All rights reserved.
 //
 
-
 import UIKit
 import SnapKit
+
 
 class CategoriesViewController: UIViewController {
     
     override func loadView() {
-    super.loadView()
+        super.loadView()
         
     }
     
