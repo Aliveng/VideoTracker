@@ -24,9 +24,9 @@ class AuthorizationViewController: UIViewController {
         view.text = "Добро пожаловать в \n Название приложения"
         view.textAlignment = .center
         if Device.isSmall() {
-            view.font = UIFont.init(name: "Roboto-Bold", size: 18)
+            view.font = .primary(size: 18, weight: .bold)
         } else {
-            view.font = UIFont.init(name: "Roboto-Bold", size: 20)
+            view.font = .primary(size: 20, weight: .bold)
         }
         view.numberOfLines = 0
         return view
@@ -38,9 +38,9 @@ class AuthorizationViewController: UIViewController {
         view.text = "Версия 1.0"
         view.textAlignment = .center
         if Device.isSmall() {
-            view.font = UIFont.init(name: "Roboto-Bold", size: 16)
+            view.font = .primary(size: 16, weight: .bold)
         } else {
-            view.font = UIFont.init(name: "Roboto-Bold", size: 18)
+            view.font = .primary(size: 18, weight: .bold)
         }
         view.numberOfLines = 0
         return view
@@ -51,7 +51,7 @@ class AuthorizationViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.cornerRadius = 8
         view.setTitle("Авторизоваться", for: .normal)
-        view.titleLabel?.font = UIFont.init(name: "Roboto-Bold", size: 18)
+        view.titleLabel?.font = .primary(size: 18, weight: .bold)
         view.setTitleColor( .black, for: .normal)
         view.addTarget(self,
                        action: #selector(didTapAuthorization),

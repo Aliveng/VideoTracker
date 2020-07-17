@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  VideoTracker
 //
 //  Created by Татьяна Севостьянова on 16.07.2020.
@@ -10,18 +10,18 @@ import UIKit
 import SnapKit
 
 
-class NewsListController: UIViewController {
-
+class SettingsViewController: UIViewController {
+    
     override func loadView() {
-    super.loadView()
+        super.loadView()
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         navigationController?.navigationBar.isHidden = true
-        
     }
 }
+

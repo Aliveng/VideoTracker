@@ -21,6 +21,7 @@
 		0F16F3BF24C0A4A800EBAEBC /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */; };
 		0F16F3C124C0A64100EBAEBC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */; };
 		D60D0BA82542C7C17A3B1067 /* Pods_VideoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */; };
+		F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6909C24C1D46F00A49318 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		32B97A7213B0A52C2FF26E6E /* Pods-VideoTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.release.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.debug.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		F1F6909C24C1D46F00A49318 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				0F16F39924C03CBE00EBAEBC /* AppDelegate.swift */,
-				0F16F3B824C07A5D00EBAEBC /* Device.swift */,
-				0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */,
-				0F16F3B624C064E100EBAEBC /* NewsListController.swift */,
-				0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */,
-				0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */,
-				0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */,
+				F1F6909E24C1D70700A49318 /* Screens */,
 				0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */,
+				F1F6909F24C1D75700A49318 /* Utils */,
 				0F16F3B324C05E4700EBAEBC /* Resources */,
 				0F16F3A424C03CBF00EBAEBC /* LaunchScreen.storyboard */,
 				0F16F3A724C03CBF00EBAEBC /* Info.plist */,
@@ -99,6 +97,7 @@
 				0F16F3AF24C05DDB00EBAEBC /* Colors.swift */,
 				0F16F3AE24C05DDB00EBAEBC /* Images.swift */,
 				0F16F3AD24C05DDB00EBAEBC /* UIColor+extensions.swift */,
+				F1F6909C24C1D46F00A49318 /* Fonts.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -118,6 +117,37 @@
 				CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1F6909E24C1D70700A49318 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F1F690A424C1E05700A49318 /* Video */,
+				0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */,
+				0F16F3B624C064E100EBAEBC /* NewsListController.swift */,
+				0F16F3BE24C0A4A800EBAEBC /* CategoriesViewController.swift */,
+				0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */,
+				0F16F3C024C0A64100EBAEBC /* SettingsViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F1F6909F24C1D75700A49318 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0F16F3B824C07A5D00EBAEBC /* Device.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F1F690A424C1E05700A49318 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				F1F690A524C1E0BD00A49318 /* PlayerCell.swift */,
+				F1F690A224C1D88900A49318 /* VideoListViewController.swift */,
+				F1F690A024C1D7A700A49318 /* VideoViewController.swift */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +273,7 @@
 				0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */,
 				0F16F39A24C03CBE00EBAEBC /* AppDelegate.swift in Sources */,
 				0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */,
+				F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */,
 				0F16F3BD24C099AD00EBAEBC /* ChatViewController.swift in Sources */,
 				0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */,
 			);
