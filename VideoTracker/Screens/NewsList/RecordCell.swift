@@ -60,7 +60,7 @@ class RecordCell: UITableViewCell {
             item.right.equalToSuperview()
             item.top.equalTo(videoImageView.snp.bottom)
         })
-
+        
     }
     
     required init?(coder: NSCoder) {

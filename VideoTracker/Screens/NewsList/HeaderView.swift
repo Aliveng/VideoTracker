@@ -75,7 +75,6 @@ class HeaderView: UIView {
             item.width.equalTo(28)
             item.right.bottom.equalToSuperview().offset(-15)
             item.top.equalToSuperview().offset(14)
-         //   item.bottom.equalToSuperview().offset(-15)
         })
         
     }
@@ -83,5 +82,4 @@ class HeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

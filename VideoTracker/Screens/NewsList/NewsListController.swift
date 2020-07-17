@@ -21,17 +21,17 @@ enum CellModel {
 }
 
 struct SectionModel {
- //   let title: String
     let items: [CellModel]
 }
 
 class NewsListController: UIViewController {
-
+    
     lazy var recordsTableView: UITableView = {
         let view = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         view.backgroundColor = .white
         view.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         view.register(RecordCell.self, forCellReuseIdentifier: RecordCell.reuseId)
+        view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
         return view
@@ -42,10 +42,10 @@ class NewsListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     //tabBarController?.navigationItem.title = "Лента"
-      //  title = "Лента"
+        //tabBarController?.navigationItem.title = "Лента"
+        //  title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-
+        
         navigationController?.navigationBar.barTintColor = UIColor.red
         navigationController?.navigationBar.barStyle = .default
         
@@ -115,20 +115,20 @@ extension NewsListController: UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
                 switch RecordsModel {
                 case .oneRecord:
-                    cell.headerView.avatarImageView = UIImageView(image: .avatar1)
+                    cell.headerView.avatarImageView.image = .avatar1
                     cell.headerView.titleLabel.text = "Заголовок записи"
                     cell.headerView.dateLabel.text = "15 мая 2020"
-                    cell.videoImageView = UIImageView(image: .video1)
+                    cell.videoImageView.image = .video1
                 case .twoRecord:
-                    cell.headerView.avatarImageView = UIImageView(image: .avatar2)
+                    cell.headerView.avatarImageView.image = .avatar2
                     cell.headerView.titleLabel.text = "Заголовок записи"
                     cell.headerView.dateLabel.text = "14 мая 2020"
-                    cell.videoImageView = UIImageView(image: .video2)
+                    cell.videoImageView.image = .video2
                 case .threeRecord:
-                    cell.headerView.avatarImageView = UIImageView(image: .avatar3)
+                    cell.headerView.avatarImageView.image = .avatar3
                     cell.headerView.titleLabel.text = "Заголовок записи"
                     cell.headerView.dateLabel.text = "13 мая 2020"
-                    cell.videoImageView = UIImageView(image: .video3)
+                    cell.videoImageView.image = .video3
                 }
                 return cell
             }

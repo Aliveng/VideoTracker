@@ -63,12 +63,12 @@ class FooterView: UIView {
             item.top.equalToSuperview().offset(10)
             item.bottom.equalToSuperview().offset(-13)
         })
-
+        
         favoriteNumberLabel.snp.makeConstraints({ item in
             item.left.equalTo(favoriteImageView.snp.right).offset(4)
             item.centerY.equalTo(favoriteImageView.snp.centerY)
         })
-
+        
         viewersImageView.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
@@ -76,7 +76,7 @@ class FooterView: UIView {
             item.top.equalToSuperview().offset(10)
             item.bottom.equalToSuperview().offset(-13)
         })
-
+        
         viewersNumberLabel.snp.makeConstraints({ item in
             item.left.equalTo(viewersImageView.snp.right).offset(8)
             item.centerY.equalTo(viewersImageView.snp.centerY)
@@ -94,5 +94,4 @@ class FooterView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
