@@ -62,8 +62,8 @@ class AuthorizationViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .orange
-        navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(backgroundImgView)
         view.addSubview(titleLabel)
@@ -119,10 +119,11 @@ class AuthorizationViewController: UIViewController {
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.tintColor = UIColor.black
         tabBarController.tabBar.unselectedItemTintColor = UIColor.unselectedColor
-        tabBarController.setViewControllers([newsListController,
-                                             categoriesViewController,
-                                             chatViewController,
-                                             settingsViewController], animated: true)
+        tabBarController.setViewControllers([UINavigationController.init(rootViewController: newsListController),
+                                             UINavigationController.init(rootViewController: categoriesViewController),
+                                             UINavigationController.init(rootViewController: chatViewController),
+                                             UINavigationController.init(rootViewController: settingsViewController)],
+                                            animated: true)
         
         navigationController?.pushViewController(tabBarController, animated: true)
         print("Кнопка Авторизоваться")

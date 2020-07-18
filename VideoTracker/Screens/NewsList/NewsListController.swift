@@ -42,12 +42,8 @@ class NewsListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tabBarController?.navigationItem.title = "Лента"
-        //  title = "Лента"
+        title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        
-        navigationController?.navigationBar.barTintColor = UIColor.red
-        navigationController?.navigationBar.barStyle = .default
         
         view.addSubview(recordsTableView)
         
