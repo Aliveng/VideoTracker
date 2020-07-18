@@ -103,7 +103,7 @@ class AuthorizationViewController: UIViewController {
     @objc
     private func didTapAuthorization() {
         
-        let newsListController = NewsListController()
+        let newsListController = VideoListViewController() //NewsListController()
         newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
         
         let categoriesViewController = CategoriesViewController()

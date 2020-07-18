@@ -25,6 +25,9 @@
 		0FD4803924C2086400AE6517 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD4803824C2086400AE6517 /* FooterView.swift */; };
 		D60D0BA82542C7C17A3B1067 /* Pods_VideoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */; };
 		F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6909C24C1D46F00A49318 /* Fonts.swift */; };
+		F1F690A124C1D7A700A49318 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690A024C1D7A700A49318 /* VideoViewController.swift */; };
+		F1F690A324C1D88900A49318 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690A224C1D88900A49318 /* VideoListViewController.swift */; };
+		F1F690A624C1E0BD00A49318 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690A524C1E0BD00A49318 /* PlayerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.debug.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		F1F6909C24C1D46F00A49318 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		F1F690A024C1D7A700A49318 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		F1F690A224C1D88900A49318 /* VideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		F1F690A524C1E0BD00A49318 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,11 +288,14 @@
 				0F16F3B724C064E100EBAEBC /* NewsListController.swift in Sources */,
 				0FD4803924C2086400AE6517 /* FooterView.swift in Sources */,
 				0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */,
+				F1F690A624C1E0BD00A49318 /* PlayerCell.swift in Sources */,
+				F1F690A124C1D7A700A49318 /* VideoViewController.swift in Sources */,
 				0F16F3C124C0A64100EBAEBC /* SettingsViewController.swift in Sources */,
 				0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */,
 				0F16F3BF24C0A4A800EBAEBC /* CategoriesViewController.swift in Sources */,
 				0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */,
 				0F16F39A24C03CBE00EBAEBC /* AppDelegate.swift in Sources */,
+				F1F690A324C1D88900A49318 /* VideoListViewController.swift in Sources */,
 				0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */,
 				F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */,
 				0F16F3BD24C099AD00EBAEBC /* ChatViewController.swift in Sources */,
@@ -430,7 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SB478V62H9;
+				DEVELOPMENT_TEAM = RF42FG352F;
 				INFOPLIST_FILE = VideoTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,7 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SB478V62H9;
+				DEVELOPMENT_TEAM = RF42FG352F;
 				INFOPLIST_FILE = VideoTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
