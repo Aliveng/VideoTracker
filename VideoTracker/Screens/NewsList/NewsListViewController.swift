@@ -34,6 +34,8 @@ struct SectionModel {
 
 class NewsListViewController: UIViewController {
     
+    var viewModel: NewsListViewModel
+    
     lazy var recordsTableView: UITableView = {
         let view = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         view.backgroundColor = .white
@@ -45,7 +47,14 @@ class NewsListViewController: UIViewController {
         return view
     }()
     
-    var sections: [Int: SectionModel] = [:]
+    init(viewModel: NewsListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,39 +70,13 @@ class NewsListViewController: UIViewController {
             item.bottom.equalToSuperview()
         })
         
-        sections[0] = SectionModel(items: [
-            .record(model: Record.init(avatar: .avatar1,
-                                       title: "Запись один",
-                                       date: "15 мая 2019",
-                                       video: .video1,
-                                       isLiked: false,
-                                       favoriteNumber: 23,
-                                       viewsNumber: 123,
-                                       isBookmark: false)),
-            .record(model: Record.init(avatar: .avatar2,
-                                       title: "Запись два",
-                                       date: "14 мая 2019",
-                                       video: .video2,
-                                       isLiked: false,
-                                       favoriteNumber: 54,
-                                       viewsNumber: 67,
-                                       isBookmark: false)),
-            .record(model: Record.init(avatar: .avatar3,
-                                       title: "Запись три",
-                                       date: "13 мая 2019",
-                                       video: .video3,
-                                       isLiked: false,
-                                       favoriteNumber: 200,
-                                       viewsNumber: 37,
-                                       isBookmark: false)),
-
-        ])
+        viewModel.loadData()
     }
 }
 
 extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellModel = sections[indexPath.section]?.items[indexPath.row]
+        let cellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
         
         switch cellModel {
         case .record:
@@ -106,11 +89,11 @@ extension NewsListViewController: UITableViewDelegate {
 
 extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section]?.items.count ?? 0
+        return viewModel.sections[section]?.items.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return viewModel.sections.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -134,7 +117,7 @@ extension NewsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let сellModel = sections[indexPath.section]?.items[indexPath.row]
+        let сellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
         
         switch сellModel {
         case let .record(model):
