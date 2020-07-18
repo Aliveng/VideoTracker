@@ -10,4 +10,8 @@ target 'VideoTracker' do
   pod 'SnapKit'
   pod 'Hero'
 
+  pod 'MMPlayerView'
+
+  // pod 'Swinject'
+
 end
