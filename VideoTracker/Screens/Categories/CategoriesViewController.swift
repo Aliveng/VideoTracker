@@ -17,6 +17,8 @@ struct Item {
 
 class CategoriesViewController: UIViewController {
     
+    var viewModel: CategoriesViewModel
+    
     lazy var itemsCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -32,20 +34,29 @@ class CategoriesViewController: UIViewController {
         return view
     }()
     
-    let listImages: [Item] = [
-        Item(image: .item1, name: "BMV"),
-        Item(image: .item4, name: "Ferrari"),
-        Item(image: .item2, name: "Audio"),
-        Item(image: .item5, name: "Lexus"),
-        Item(image: .item3, name: "Mercedes"),
-        Item(image: .item6, name: "Lamborgini"),
-        Item(image: .item1, name: "BMV"),
-        Item(image: .item4, name: "Ferrari"),
-        Item(image: .item2, name: "Audio"),
-        Item(image: .item5, name: "Lexus"),
-        Item(image: .item3, name: "Mercedes"),
-        Item(image: .item6, name: "Lamborgini")
-    ]
+//    let listImages: [Item] = [
+//        Item(image: .item1, name: "BMV"),
+//        Item(image: .item4, name: "Ferrari"),
+//        Item(image: .item2, name: "Audio"),
+//        Item(image: .item5, name: "Lexus"),
+//        Item(image: .item3, name: "Mercedes"),
+//        Item(image: .item6, name: "Lamborgini"),
+//        Item(image: .item1, name: "BMV"),
+//        Item(image: .item4, name: "Ferrari"),
+//        Item(image: .item2, name: "Audio"),
+//        Item(image: .item5, name: "Lexus"),
+//        Item(image: .item3, name: "Mercedes"),
+//        Item(image: .item6, name: "Lamborgini")
+//    ]
+    
+    init(viewModel: CategoriesViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -66,18 +77,20 @@ class CategoriesViewController: UIViewController {
               item.top.equalToSuperview().offset(70)
         
           })
+        
+        viewModel.loadData()
     }
 }
 
 extension CategoriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listImages.count
+        return viewModel.listImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
-        (cell as? ItemCell)?.image.image = listImages[indexPath.row].image
-        (cell as? ItemCell)?.name.text = "\(listImages[indexPath.row].name)"
+        (cell as? ItemCell)?.image.image = viewModel.listImages[indexPath.row].image
+        (cell as? ItemCell)?.name.text = "\(viewModel.listImages[indexPath.row].name)"
         cell.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
