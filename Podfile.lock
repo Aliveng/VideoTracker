@@ -2,23 +2,27 @@ PODS:
   - Hero (1.5.0)
   - MMPlayerView (6.0.2)
   - SnapKit (5.0.1)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
   - Hero
   - MMPlayerView
   - SnapKit
+  - Swinject
 
 SPEC REPOS:
   trunk:
     - Hero
     - MMPlayerView
     - SnapKit
+    - Swinject
 
 SPEC CHECKSUMS:
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   MMPlayerView: e28bace82369bcfbfbe29f9dcd30eeb641a46754
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: ceba4de6b89a4e50b81c4f36a22cc099aa90304f
+PODFILE CHECKSUM: d11a4f49de804496ed3585fe88a4b1caa02b5bba
 
 COCOAPODS: 1.8.4
