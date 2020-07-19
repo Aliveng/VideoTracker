@@ -31,6 +31,13 @@ extension UIImage {
     static let viewers = UIImage(imageLiteralResourceName: "viewers")
     static let bookmarkEmpty = UIImage(imageLiteralResourceName: "bookmark_empty")
     
+    //для Категорий
+    static let item1 = UIImage(imageLiteralResourceName: "item1")
+    static let item2 = UIImage(imageLiteralResourceName: "item2")
+    static let item3 = UIImage(imageLiteralResourceName: "item3")
+    static let item4 = UIImage(imageLiteralResourceName: "item4")
+    static let item5 = UIImage(imageLiteralResourceName: "item5")
+    static let item6 = UIImage(imageLiteralResourceName: "item6")
     
 
 }

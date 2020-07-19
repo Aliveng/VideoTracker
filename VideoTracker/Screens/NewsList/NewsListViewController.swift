@@ -1,27 +1,43 @@
 //
-//  ViewController.swift
+//  NewsListViewController.swift
 //  VideoTracker
 //
-//  Created by Татьяна Севостьянова on 16.07.2020.
+//  Created by Татьяна Севостьянова on 18.07.2020.
 //  Copyright © 2020 Татьяна Севостьянова. All rights reserved.
 //
+
 
 import UIKit
 import SnapKit
 import AVFoundation
 import MMPlayerView
 
-
+struct Record {
+    
+    let avatar: UIImage
+    let title: String
+    let date: String
+    let video: UIImage
+    let isLiked: Bool
+    let favoriteNumber: Int
+    let viewsNumber: Int
+    let isBookmark: Bool
+    
+}
 
 enum CellModel {
     case newRecord(model: NewsItem)
+    case record(model: Record)
 }
+
 
 struct SectionModel {
     let items: [CellModel]
 }
 
-class NewsListController: UIViewController {
+class NewsListViewController: UIViewController {
+    
+    var viewModel: NewsListViewModel
     
     var offsetObservation: NSKeyValueObservation?
     let coverView = CoverView()
@@ -48,7 +64,14 @@ class NewsListController: UIViewController {
         return view
     }()
     
-    var sections: [Int: SectionModel] = [:]
+    init(viewModel: NewsListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var viewModel: NewsListViewModel
     
@@ -79,9 +102,10 @@ class NewsListController: UIViewController {
         setupCollectionView()
         setupPlayerLayer()
         
-        viewModel.news.subscribe { items in
-            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
-        }
+        viewModel.loadData()
+//        viewModel.news.subscribe { items in
+//            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
+//        }
     }
     
     private func setupCollectionView() {
@@ -171,12 +195,12 @@ class NewsListController: UIViewController {
     
 }
 
-extension NewsListController: UITableViewDelegate {
+extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellModel = sections[indexPath.section]?.items[indexPath.row]
+        let cellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
         
         switch cellModel {
-        case .newRecord:
+        case .record:
             return 360
         case .none:
             return 0
@@ -226,13 +250,13 @@ extension NewsListController: UITableViewDelegate {
     
 }
 
-extension NewsListController: UITableViewDataSource {
+extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section]?.items.count ?? 0
+        return viewModel.sections[section]?.items.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return viewModel.sections.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -247,16 +271,16 @@ extension NewsListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
-        footerView.backgroundColor = UIColor.green
+        footerView.backgroundColor = UIColor.gray
         return footerView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let сellModel = sections[indexPath.section]?.items[indexPath.row]
+        let сellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
         
         switch сellModel {
         case let .newRecord(model: model):
@@ -268,7 +292,16 @@ extension NewsListController: UITableViewDataSource {
                 cell.playerView.imgView.image = model.video.image
                 cell.footerView.favoriteNumberLabel.text = model.likes.string
                 cell.footerView.viewersNumberLabel.text = model.views.string
+            }
                                 
+        case let .record(model):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
+                cell.headerView.avatarImageView.image = model.avatar
+                cell.headerView.titleLabel.text = model.title
+                cell.headerView.dateLabel.text = model.date
+                cell.videoImageView.image = model.video
+                cell.footerView.favoriteNumberLabel.text = "\(model.favoriteNumber)"
+                cell.footerView.viewersNumberLabel.text = "\(model.viewsNumber)"
                 return cell
             }
         case .none:
@@ -276,4 +309,5 @@ extension NewsListController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
 }

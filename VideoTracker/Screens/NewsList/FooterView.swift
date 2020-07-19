@@ -12,7 +12,7 @@ import SnapKit
 
 class FooterView: UIView {
     
-    lazy var favoriteImageView: UIImageView = {
+    private lazy var favoriteImageView: UIImageView = {
         let view = UIImageView(image: .favoriteEmpty)
         return view
     }()
@@ -27,7 +27,7 @@ class FooterView: UIView {
         return view
     }()
     
-    lazy var viewersImageView: UIImageView = {
+    private lazy var viewersImageView: UIImageView = {
         let view = UIImageView(image: .viewers)
         return view
     }()
@@ -42,7 +42,7 @@ class FooterView: UIView {
         return view
     }()
     
-    lazy var bookmarkImageView: UIImageView = {
+    private lazy var bookmarkImageView: UIImageView = {
         let view = UIImageView(image: .bookmarkEmpty)
         return view
     }()
