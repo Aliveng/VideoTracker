@@ -31,6 +31,12 @@ class RecordCell: UITableViewCell {
         return view
     }()
     
+    private lazy var grayLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.7293313146, green: 0.7294581532, blue: 0.7293233275, alpha: 1)
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -39,6 +45,7 @@ class RecordCell: UITableViewCell {
         addSubview(headerView)
         addSubview(videoImageView)
         addSubview(footerView)
+        addSubview(grayLineView)
         
         headerView.snp.makeConstraints({ item in
             item.height.equalTo(57)
@@ -61,6 +68,11 @@ class RecordCell: UITableViewCell {
             item.top.equalTo(videoImageView.snp.bottom)
         })
         
+        grayLineView.snp.makeConstraints({ item in
+            item.height.equalTo(8)
+            item.left.right.equalToSuperview()
+            item.top.equalTo(footerView.snp.bottom)
+        })
     }
     
     required init?(coder: NSCoder) {

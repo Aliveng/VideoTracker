@@ -103,7 +103,6 @@ class AuthorizationViewController: UIViewController {
     @objc
     private func didTapAuthorization() {
         
-       // let viewModel = NewsListViewModel()
         let newListViewModel = NewsListViewModel()
         
         let newsListController = NewsListViewController(viewModel: newListViewModel)

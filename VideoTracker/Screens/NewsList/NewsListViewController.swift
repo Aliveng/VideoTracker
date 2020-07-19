@@ -39,7 +39,7 @@ class NewsListViewController: UIViewController {
     lazy var recordsTableView: UITableView = {
         let view = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         view.backgroundColor = .white
-        view.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        view.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.register(RecordCell.self, forCellReuseIdentifier: RecordCell.reuseId)
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
@@ -80,7 +80,7 @@ extension NewsListViewController: UITableViewDelegate {
         
         switch cellModel {
         case .record:
-            return 360
+            return 368
         case .none:
             return 0
         }
@@ -113,7 +113,7 @@ extension NewsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 8
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
