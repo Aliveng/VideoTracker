@@ -81,7 +81,7 @@ class NewsListViewController: UIViewController {
         title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         navigationController?.setNavigationBarHidden(false, animated: true)
-                
+        
         view.addSubview(recordsTableView)
         
         recordsTableView.snp.makeConstraints({ item in
@@ -96,7 +96,7 @@ class NewsListViewController: UIViewController {
         viewModel.news
             .subscribe { items in
                 print(items)
-            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
+                self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
         }
         
         viewModel.loadData()
@@ -107,8 +107,8 @@ class NewsListViewController: UIViewController {
             guard
                 let self = self,
                 self.presentedViewController == nil
-            else {
-                return
+                else {
+                    return
             }
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             self.perform(#selector(self.startLoading), with: nil, afterDelay: 0.2)
@@ -123,8 +123,8 @@ class NewsListViewController: UIViewController {
     
     private func setupPlayerLayer() {
         navigationController?.mmPlayerTransition.push.pass(setting: { value in
-                   print(value)
-               })
+            print(value)
+        })
         
         playerLayer.getStatusBlock { [weak self] (status) in
             switch status {
@@ -185,7 +185,7 @@ class NewsListViewController: UIViewController {
     private func findCurrentCell(path: IndexPath) -> UITableViewCell {
         return recordsTableView.cellForRow(at: path)!
     }
-
+    
     
 }
 
@@ -203,8 +203,8 @@ extension NewsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DispatchQueue.main.async { [unowned self] in
-        if self.presentedViewController != nil || self.playerLayer.isShrink == true {
-            self.recordsTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+            if self.presentedViewController != nil || self.playerLayer.isShrink == true {
+                self.recordsTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
                 self.updateDetail(at: indexPath)
             } else {
                 self.presentDetail(at: indexPath)
@@ -217,19 +217,19 @@ extension NewsListViewController: UITableViewDelegate {
         playerLayer.resume()
     }
     
-     fileprivate func updateDetail(at indexPath: IndexPath) {
-            guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else { return }
-    
-            switch сellModel {
-            case .record:
-                ()
-            case let .newRecord(model):
-                playerLayer.thumbImageView.image = model.video.image
-                playerLayer.set(url: model.video.videoUrl)
-                playerLayer.resume()
-            }
-    
+    fileprivate func updateDetail(at indexPath: IndexPath) {
+        guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else { return }
+        
+        switch сellModel {
+        case .record:
+            ()
+        case let .newRecord(model):
+            playerLayer.thumbImageView.image = model.video.image
+            playerLayer.set(url: model.video.videoUrl)
+            playerLayer.resume()
         }
+        
+    }
     
     private func updateCell(at indexPath: IndexPath) {
         if
@@ -247,15 +247,15 @@ extension NewsListViewController: UITableViewDelegate {
 }
 
 extension NewsListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section]?.items.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
-        
     }
-      
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
@@ -275,7 +275,7 @@ extension NewsListViewController: UITableViewDataSource {
                 cell.footerView.viewersNumberLabel.text = model.views.string
                 return cell
             }
-                                
+            
         case let .record(model):
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
                 cell.headerView.avatarImageView.image = model.avatar
@@ -289,6 +289,7 @@ extension NewsListViewController: UITableViewDataSource {
         case .none:
             return UITableViewCell()
         }
+        
         return UITableViewCell()
     }
     
