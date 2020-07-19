@@ -253,6 +253,8 @@ extension NewsListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
+        
+    }
       
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
@@ -265,7 +267,7 @@ extension NewsListViewController: UITableViewDataSource {
         case let .newRecord(model: model):
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
                 cell.model = model
-                cell.headerView.avatarImageView.image = .avatar1
+                cell.headerView.avatarImageView.image = model.avatar
                 cell.headerView.titleLabel.text = model.title
                 cell.headerView.dateLabel.text = model.publishDate.string
                 cell.playerView.imgView.image = model.video.image

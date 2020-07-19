@@ -13,7 +13,7 @@ class FooterView: UIView {
     
     lazy var favoriteNumberLabel: UILabel = {
         let view = UILabel()
-        view.text = "126"
+        view.text = "0"
         view.textColor = .black
         view.font = .primary(size: 10, weight: .bold)
         view.textAlignment = .left
@@ -35,9 +35,14 @@ class FooterView: UIView {
         let view = UIImageView(image: .viewers)
         return view
     }()
-
-    private lazy var favoriteImageView: UIImageView = {
-        let view = UIImageView(image: .favoriteEmpty)
+    
+    private lazy var favoriteButton: UIButton = {
+        let view = UIButton()
+        view.isEnabled = true
+        view.setImage(.favoriteEmpty, for: .normal)
+        view.addTarget(self,
+                       action: #selector(didTapFavorite),
+                       for: .touchUpInside)
         return view
     }()
     
@@ -49,13 +54,13 @@ class FooterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(favoriteImageView)
+        addSubview(favoriteButton)
         addSubview(favoriteNumberLabel)
         addSubview(viewersImageView)
         addSubview(viewersNumberLabel)
         addSubview(bookmarkImageView)
         
-        favoriteImageView.snp.makeConstraints({ item in
+        favoriteButton.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
             item.left.equalToSuperview().offset(13)
@@ -64,8 +69,8 @@ class FooterView: UIView {
         })
 
         favoriteNumberLabel.snp.makeConstraints({ item in
-            item.left.equalTo(favoriteImageView.snp.right).offset(4)
-            item.centerY.equalTo(favoriteImageView.snp.centerY)
+            item.left.equalTo(favoriteButton.snp.right).offset(4)
+            item.centerY.equalTo(favoriteButton.snp.centerY)
         })
 
         viewersImageView.snp.makeConstraints({ item in
@@ -91,5 +96,14 @@ class FooterView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func didTapFavorite() {
+        //  favoriteButton.tintColor = .red
+        favoriteButton.setImage(.favoriteFull, for: .normal)
+        let textInt = Int(favoriteNumberLabel.text ?? "")
+        favoriteNumberLabel.text = "\(textInt! + 1)"
+        print("Like")
     }
 }
