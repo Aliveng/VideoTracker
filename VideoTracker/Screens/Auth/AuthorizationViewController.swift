@@ -13,7 +13,7 @@ import Swinject
 
 class AuthorizationViewController: UIViewController {
     
-    weak var container: Container!
+    var coordinatorDelegate: AppCoordinatorDelegate?
     
     lazy var backgroundImgView: UIImageView = {
         let view = UIImageView()
@@ -63,8 +63,8 @@ class AuthorizationViewController: UIViewController {
     }()
     
     
-    init(container: Container) {
-        self.container = container
+    init() {
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -116,8 +116,6 @@ class AuthorizationViewController: UIViewController {
     @objc
     private func didTapAuthorization() {
         print("Кнопка Авторизоваться")
-        if let tabBarController = container.resolve(UITabBarController.self) {
-            navigationController?.pushViewController(tabBarController, animated: true)
-        }
+        coordinatorDelegate?.authFinish()
     }
 }
