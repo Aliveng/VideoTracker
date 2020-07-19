@@ -14,12 +14,11 @@ class RecordCell: UITableViewCell {
     
     static let reuseId = "RecordCell"
     
-    var model: NewsItem?
-//    {
-//        didSet {
-//            self.playerView.imgView.image = data?.image
-//        }
-//    }
+    var model: NewsItem? {
+        didSet {
+            self.playerView.imgView.image = model?.video.image
+        }
+    }
     
     lazy var headerView: HeaderView = {
         let view = HeaderView()
@@ -29,13 +28,10 @@ class RecordCell: UITableViewCell {
     
     lazy var playerView: PlayerView = {
         let playerView = PlayerView()
+        playerView.imgView.image = .video3
+        playerView.backgroundColor = .red
         return playerView
     }()
-    
-//    lazy var videoImageView: UIImageView = {
-//        let view = UIImageView(image: .video1)
-//        return view
-//    }()
     
     lazy var footerView: FooterView = {
         let view = FooterView()
@@ -47,24 +43,23 @@ class RecordCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        backgroundColor = .white
+        backgroundColor = .background
+        
         addSubview(headerView)
         addSubview(playerView)
         addSubview(footerView)
         
-        headerView.snp.makeConstraints({ item in
-            item.height.equalTo(57)
-            item.left.equalToSuperview()
-            item.right.equalToSuperview()
-            item.top.equalToSuperview()
-        })
+        headerView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(57)
+            $0.left.right.equalToSuperview()
+        }
         
-        playerView.snp.makeConstraints({ item in
-            item.height.equalTo(252)
-            item.left.equalToSuperview()
-            item.right.equalToSuperview()
-            item.top.equalTo(headerView.snp.bottom)
-        })
+        playerView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(252)
+        }
         
         footerView.snp.makeConstraints({ item in
             item.height.equalTo(53)

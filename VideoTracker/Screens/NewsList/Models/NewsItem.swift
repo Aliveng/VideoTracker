@@ -15,4 +15,6 @@ struct NewsItem {
     var publishDate: Date
     var likes: Int
     var views: Int
+    var isLiked: Bool
+    var inBookmarks: Bool
 }

@@ -37,12 +37,9 @@ struct SectionModel {
 
 class NewsListViewController: UIViewController {
     
-    var viewModel: NewsListViewModel
+    private let coverView = CoverView()
     
-    var offsetObservation: NSKeyValueObservation?
-    let coverView = CoverView()
-    
-    lazy var playerLayer: MMPlayerLayer = {
+    private lazy var playerLayer: MMPlayerLayer = {
         let playerLayer = MMPlayerLayer()
         playerLayer.cacheType = .memory(count: 5)
         playerLayer.coverFitType = .fitToPlayerView
@@ -53,10 +50,10 @@ class NewsListViewController: UIViewController {
         return playerLayer
     }()
     
-    lazy var recordsTableView: UITableView = {
+    private lazy var recordsTableView: UITableView = {
         let view = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-        view.backgroundColor = .white
-        view.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        view.backgroundColor = .background
+        view.separatorStyle = .none
         view.register(RecordCell.self, forCellReuseIdentifier: RecordCell.reuseId)
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
@@ -64,16 +61,9 @@ class NewsListViewController: UIViewController {
         return view
     }()
     
-    init(viewModel: NewsListViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    private var offsetObservation: NSKeyValueObservation?
     private var viewModel: NewsListViewModel
+    private var sections: [Int: SectionModel] = [:]
     
     init(viewModel: NewsListViewModel) {
         self.viewModel = viewModel
@@ -83,6 +73,7 @@ class NewsListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,16 +90,19 @@ class NewsListViewController: UIViewController {
             item.bottom.equalToSuperview()
         })
         
-        setupCollectionView()
+        setupTableView()
         setupPlayerLayer()
         
+        viewModel.news
+            .subscribe { items in
+                print(items)
+            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
+        }
+        
         viewModel.loadData()
-//        viewModel.news.subscribe { items in
-//            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
-//        }
     }
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         offsetObservation = recordsTableView.observe(\.contentOffset, options: [.new]) { [weak self] (_, value) in
             guard
                 let self = self,
@@ -197,11 +191,11 @@ class NewsListViewController: UIViewController {
 
 extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
+        let cellModel = sections[indexPath.section]?.items[indexPath.row]
         
         switch cellModel {
-        case .record:
-            return 360
+        case .record, .newRecord:
+            return 368
         case .none:
             return 0
         }
@@ -227,6 +221,8 @@ extension NewsListViewController: UITableViewDelegate {
             guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else { return }
     
             switch сellModel {
+            case .record:
+                ()
             case let .newRecord(model):
                 playerLayer.thumbImageView.image = model.video.image
                 playerLayer.set(url: model.video.videoUrl)
@@ -252,35 +248,15 @@ extension NewsListViewController: UITableViewDelegate {
 
 extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sections[section]?.items.count ?? 0
+        return sections[section]?.items.count ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.red
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = UIColor.gray
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 8
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let сellModel = viewModel.sections[indexPath.section]?.items[indexPath.row]
+        let сellModel = sections[indexPath.section]?.items[indexPath.row]
         
         switch сellModel {
         case let .newRecord(model: model):
@@ -292,6 +268,7 @@ extension NewsListViewController: UITableViewDataSource {
                 cell.playerView.imgView.image = model.video.image
                 cell.footerView.favoriteNumberLabel.text = model.likes.string
                 cell.footerView.viewersNumberLabel.text = model.views.string
+                return cell
             }
                                 
         case let .record(model):
@@ -299,7 +276,7 @@ extension NewsListViewController: UITableViewDataSource {
                 cell.headerView.avatarImageView.image = model.avatar
                 cell.headerView.titleLabel.text = model.title
                 cell.headerView.dateLabel.text = model.date
-                cell.videoImageView.image = model.video
+                cell.playerView.imgView.image = model.video
                 cell.footerView.favoriteNumberLabel.text = "\(model.favoriteNumber)"
                 cell.footerView.viewersNumberLabel.text = "\(model.viewsNumber)"
                 return cell

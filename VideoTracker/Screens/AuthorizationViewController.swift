@@ -105,10 +105,7 @@ class AuthorizationViewController: UIViewController {
         
 
         let newsViewModel = NewsListViewModel(newsService: NewsService())
-        let newsListController = NewsListController(viewModel: newsViewModel)
-        
-//        let newListViewModel = NewsListViewModel()
-//        let newsListController = NewsListViewController(viewModel: newListViewModel)
+        let newsListController = NewsListViewController(viewModel: newsViewModel)
         newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
         
         let categoriesViewModel = CategoriesViewModel()
