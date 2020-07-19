@@ -8,9 +8,12 @@
 
 import UIKit
 import SnapKit
+import Swinject
 
 
 class AuthorizationViewController: UIViewController {
+    
+    weak var container: Container!
     
     lazy var backgroundImgView: UIImageView = {
         let view = UIImageView()
@@ -59,6 +62,16 @@ class AuthorizationViewController: UIViewController {
         return view
     }()
     
+    
+    init(container: Container) {
+        self.container = container
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         super.loadView()
         
@@ -102,32 +115,9 @@ class AuthorizationViewController: UIViewController {
     
     @objc
     private func didTapAuthorization() {
-        let newsViewModel = NewsListViewModel(newsService: NewsService())
-        let newsListController = NewsListViewController(viewModel: newsViewModel)
-        newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
-        
-        let categoriesViewModel = CategoriesViewModel()
-        let categoriesViewController = CategoriesViewController(viewModel: categoriesViewModel)
-        categoriesViewController.tabBarItem = UITabBarItem.init(title: "Категории", image: .categories, tag: 1)
-        
-        let chatViewController = ChatViewController()
-        chatViewController.tabBarItem = UITabBarItem.init(title: "Чат", image: .chat, tag: 2)
-        
-        let settingsViewController = SettingsViewController()
-        settingsViewController.tabBarItem = UITabBarItem.init(title: "Настройки", image: .settings, tag: 3)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.tintColor = UIColor.black
-        tabBarController.tabBar.unselectedItemTintColor = UIColor.unselectedColor
-
-        tabBarController.setViewControllers([UINavigationController.init(rootViewController: newsListController),
-                                             UINavigationController.init(rootViewController: categoriesViewController),
-                                             UINavigationController.init(rootViewController: chatViewController),
-                                             UINavigationController.init(rootViewController: settingsViewController)],
-                                            animated: true)
-        
-        navigationController?.pushViewController(tabBarController, animated: true)
         print("Кнопка Авторизоваться")
+        if let tabBarController = container.resolve(UITabBarController.self) {
+            navigationController?.pushViewController(tabBarController, animated: true)
+        }
     }
 }
