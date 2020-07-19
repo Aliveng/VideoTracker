@@ -14,15 +14,23 @@ class RecordCell: UITableViewCell {
     
     static let reuseId = "RecordCell"
     
+    var model: NewsItem? {
+        didSet {
+            self.playerView.imgView.image = model?.video.image
+        }
+    }
+    
     lazy var headerView: HeaderView = {
         let view = HeaderView()
         view.backgroundColor = .white
         return view
     }()
     
-    lazy var videoImageView: UIImageView = {
-        let view = UIImageView(image: .video1)
-        return view
+    lazy var playerView: PlayerView = {
+        let playerView = PlayerView()
+        playerView.imgView.image = .video3
+        playerView.backgroundColor = .red
+        return playerView
     }()
     
     lazy var footerView: FooterView = {
@@ -41,31 +49,30 @@ class RecordCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
-        backgroundColor = .white
+        backgroundColor = .background
+        
         addSubview(headerView)
-        addSubview(videoImageView)
+        addSubview(playerView)
         addSubview(footerView)
         addSubview(grayLineView)
         
-        headerView.snp.makeConstraints({ item in
-            item.height.equalTo(57)
-            item.left.equalToSuperview()
-            item.right.equalToSuperview()
-            item.top.equalToSuperview()
-        })
+        headerView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.height.equalTo(57)
+            $0.left.right.equalToSuperview()
+        }
         
-        videoImageView.snp.makeConstraints({ item in
-            item.height.equalTo(252)
-            item.left.equalToSuperview()
-            item.right.equalToSuperview()
-            item.top.equalTo(headerView.snp.bottom)
-        })
+        playerView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(252)
+        }
         
         footerView.snp.makeConstraints({ item in
             item.height.equalTo(53)
             item.left.equalToSuperview()
             item.right.equalToSuperview()
-            item.top.equalTo(videoImageView.snp.bottom)
+            item.top.equalTo(playerView.snp.bottom)
         })
         
         grayLineView.snp.makeConstraints({ item in

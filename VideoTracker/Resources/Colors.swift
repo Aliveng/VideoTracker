@@ -12,5 +12,7 @@ import UIKit
 extension UIColor {
     
     static let unselectedColor = UIColor(hex: "a8a8a8")
+    static let background = UIColor(hex: "E5E5E5")
+    
     
 }

@@ -1,17 +1,16 @@
 //
-//  ChatViewController.swift
+//  CategoriesViewController.swift
 //  VideoTracker
 //
 //  Created by Татьяна Севостьянова on 16.07.2020.
 //  Copyright © 2020 Татьяна Севостьянова. All rights reserved.
 //
 
-
 import UIKit
 import SnapKit
-//import MessageKit
 
-class ChatViewController: UIViewController {
+
+class CategoriesViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
@@ -20,7 +19,9 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Чат"
-        view.backgroundColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        title = "Категории"
+        
+        view.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
     }
 }
+

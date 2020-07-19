@@ -62,7 +62,7 @@ class AuthorizationViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        view.backgroundColor = .orange
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(backgroundImgView)
@@ -102,14 +102,11 @@ class AuthorizationViewController: UIViewController {
     
     @objc
     private func didTapAuthorization() {
-        
-        let newListViewModel = NewsListViewModel()
-        
-        let newsListController = NewsListViewController(viewModel: newListViewModel)
+        let newsViewModel = NewsListViewModel(newsService: NewsService())
+        let newsListController = NewsListViewController(viewModel: newsViewModel)
         newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
         
         let categoriesViewModel = CategoriesViewModel()
-        
         let categoriesViewController = CategoriesViewController(viewModel: categoriesViewModel)
         categoriesViewController.tabBarItem = UITabBarItem.init(title: "Категории", image: .categories, tag: 1)
         
@@ -123,6 +120,7 @@ class AuthorizationViewController: UIViewController {
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.tintColor = UIColor.black
         tabBarController.tabBar.unselectedItemTintColor = UIColor.unselectedColor
+
         tabBarController.setViewControllers([UINavigationController.init(rootViewController: newsListController),
                                              UINavigationController.init(rootViewController: categoriesViewController),
                                              UINavigationController.init(rootViewController: chatViewController),

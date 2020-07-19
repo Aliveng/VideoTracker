@@ -28,6 +28,15 @@
 		0FD4803924C2086400AE6517 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD4803824C2086400AE6517 /* FooterView.swift */; };
 		D60D0BA82542C7C17A3B1067 /* Pods_VideoTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */; };
 		F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F6909C24C1D46F00A49318 /* Fonts.swift */; };
+		F1F690AD24C2FAF600A49318 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690A924C2FAF600A49318 /* VideoListViewController.swift */; };
+		F1F690AF24C2FAF600A49318 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690AB24C2FAF600A49318 /* VideoViewController.swift */; };
+		F1F690B024C2FAF600A49318 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690AC24C2FAF600A49318 /* PlayerCell.swift */; };
+		F1F690B324C325F100A49318 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690B224C325F100A49318 /* CoverView.swift */; };
+		F1F690B524C32B0400A49318 /* Player.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1F690B424C32B0400A49318 /* Player.xcassets */; };
+		F1F690B724C334D800A49318 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690B624C334D800A49318 /* NewsItem.swift */; };
+		F1F690B924C336C100A49318 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690B824C336C100A49318 /* NewsService.swift */; };
+		F1F690BB24C33A2900A49318 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690BA24C33A2900A49318 /* Variable.swift */; };
+		F1F690BF24C33D2400A49318 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F690BE24C33D2400A49318 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +65,18 @@
 		CFBFF63E9D697FC2F0BA01D3 /* Pods_VideoTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20C2F75BF6D09979AFE0EC5 /* Pods-VideoTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoTracker.debug.xcconfig"; path = "Target Support Files/Pods-VideoTracker/Pods-VideoTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		F1F6909C24C1D46F00A49318 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		F1F690A024C1D7A700A49318 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		F1F690A224C1D88900A49318 /* VideoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		F1F690A524C1E0BD00A49318 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		F1F690A924C2FAF600A49318 /* VideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
+		F1F690AB24C2FAF600A49318 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		F1F690AC24C2FAF600A49318 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		F1F690B224C325F100A49318 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		F1F690B424C32B0400A49318 /* Player.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Player.xcassets; sourceTree = "<group>"; };
+		F1F690B624C334D800A49318 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		F1F690B824C336C100A49318 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		F1F690BA24C33A2900A49318 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		F1F690BE24C33D2400A49318 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +98,7 @@
 				0F16F39724C03CBE00EBAEBC /* Products */,
 				AC0CA41A4D7F8035B9F0BBEE /* Pods */,
 				AF3EEC9410FF5C2718C67F0C /* Frameworks */,
+				F1F690A824C2FAE300A49318 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +132,7 @@
 				0F16F3AE24C05DDB00EBAEBC /* Images.swift */,
 				0F16F3AD24C05DDB00EBAEBC /* UIColor+extensions.swift */,
 				F1F6909C24C1D46F00A49318 /* Fonts.swift */,
+				F1F690BE24C33D2400A49318 /* Date.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -127,11 +150,15 @@
 		0FD4803724C203B900AE6517 /* NewsList */ = {
 			isa = PBXGroup;
 			children = (
+				F1F690B424C32B0400A49318 /* Player.xcassets */,
+				F1F690B224C325F100A49318 /* CoverView.swift */,
+				F1F690B124C30A0900A49318 /* Models */,
 				0F96A9D824C362CA00A46E9F /* NewsListViewModel.swift */,
 				0F96A9D624C3514000A46E9F /* NewsListViewController.swift */,
 				0FD4803324C1F7A500AE6517 /* RecordCell.swift */,
 				0FD4803524C1F98900AE6517 /* HeaderView.swift */,
 				0FD4803824C2086400AE6517 /* FooterView.swift */,
+				F1F690B824C336C100A49318 /* NewsService.swift */,
 			);
 			path = NewsList;
 			sourceTree = "<group>";
@@ -156,8 +183,8 @@
 		F1F6909E24C1D70700A49318 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F1F690A424C1E05700A49318 /* Video */,
 				0F16F39D24C03CBE00EBAEBC /* AuthorizationViewController.swift */,
+				F1F690A424C1E05700A49318 /* Video */,
 				0FD4803724C203B900AE6517 /* NewsList */,
 				0F2B6F3224C30D9000926F69 /* Categories */,
 				0F16F3BC24C099AD00EBAEBC /* ChatViewController.swift */,
@@ -170,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				0F16F3B824C07A5D00EBAEBC /* Device.swift */,
+				F1F690BA24C33A2900A49318 /* Variable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -177,8 +205,29 @@
 		F1F690A424C1E05700A49318 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				F1F690AC24C2FAF600A49318 /* PlayerCell.swift */,
+				F1F690A924C2FAF600A49318 /* VideoListViewController.swift */,
+				F1F690AB24C2FAF600A49318 /* VideoViewController.swift */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		F1F690A824C2FAE300A49318 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F1F690A524C1E0BD00A49318 /* PlayerCell.swift */,
+				F1F690A024C1D7A700A49318 /* VideoViewController.swift */,
+				F1F690A224C1D88900A49318 /* VideoListViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F1F690B124C30A0900A49318 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1F690B624C334D800A49318 /* NewsItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F690B524C32B0400A49318 /* Player.xcassets in Resources */,
 				0F16F3A624C03CBF00EBAEBC /* LaunchScreen.storyboard in Resources */,
 				0F16F3A324C03CBF00EBAEBC /* Assets.xcassets in Resources */,
 				0F16F3B524C0619B00EBAEBC /* Roboto-Bold.ttf in Resources */,
@@ -296,13 +346,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F690BF24C33D2400A49318 /* Date.swift in Sources */,
+				F1F690AD24C2FAF600A49318 /* VideoListViewController.swift in Sources */,
+				F1F690BB24C33A2900A49318 /* Variable.swift in Sources */,
+				F1F690B324C325F100A49318 /* CoverView.swift in Sources */,
 				0FD4803924C2086400AE6517 /* FooterView.swift in Sources */,
 				0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */,
 				0F16F3C124C0A64100EBAEBC /* SettingsViewController.swift in Sources */,
+				F1F690B724C334D800A49318 /* NewsItem.swift in Sources */,
 				0F2B6F3124C3029000926F69 /* ItemCell.swift in Sources */,
 				0F96A9D924C362CA00A46E9F /* NewsListViewModel.swift in Sources */,
 				0F16F3B224C05DDB00EBAEBC /* Colors.swift in Sources */,
+				F1F690B024C2FAF600A49318 /* PlayerCell.swift in Sources */,
 				0F16F3BF24C0A4A800EBAEBC /* CategoriesViewController.swift in Sources */,
+				F1F690B924C336C100A49318 /* NewsService.swift in Sources */,
 				0F16F3B124C05DDB00EBAEBC /* Images.swift in Sources */,
 				0F16F39A24C03CBE00EBAEBC /* AppDelegate.swift in Sources */,
 				0F16F3B924C07A5D00EBAEBC /* Device.swift in Sources */,
@@ -311,6 +368,7 @@
 				0F16F3BD24C099AD00EBAEBC /* ChatViewController.swift in Sources */,
 				0FD4803424C1F7A500AE6517 /* RecordCell.swift in Sources */,
 				0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */,
+				F1F690AF24C2FAF600A49318 /* VideoViewController.swift in Sources */,
 				0FD4803624C1F98900AE6517 /* HeaderView.swift in Sources */,
 				0F96A9D724C3514000A46E9F /* NewsListViewController.swift in Sources */,
 			);
@@ -450,7 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SB478V62H9;
+				DEVELOPMENT_TEAM = RF42FG352F;
 				INFOPLIST_FILE = VideoTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,7 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SB478V62H9;
+				DEVELOPMENT_TEAM = RF42FG352F;
 				INFOPLIST_FILE = VideoTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
