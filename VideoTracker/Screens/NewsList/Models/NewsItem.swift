@@ -11,6 +11,7 @@ import UIKit
 
 struct NewsItem {
     var video: VideoItem
+    var avatar: UIImage
     var title: String
     var publishDate: Date
     var likes: Int

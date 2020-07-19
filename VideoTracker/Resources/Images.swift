@@ -28,6 +28,7 @@ extension UIImage {
     static let video2 = UIImage(imageLiteralResourceName: "video2")
     static let video3 = UIImage(imageLiteralResourceName: "video3")
     static let favoriteEmpty = UIImage(imageLiteralResourceName: "favorite_empty")
+    static let favoriteFull = UIImage(imageLiteralResourceName: "favorite_full")
     static let viewers = UIImage(imageLiteralResourceName: "viewers")
     static let bookmarkEmpty = UIImage(imageLiteralResourceName: "bookmark_empty")
     
