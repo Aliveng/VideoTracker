@@ -87,7 +87,6 @@ class FooterView: UIView {
             item.right.bottom.equalToSuperview().offset(-12)
             item.top.equalToSuperview().offset(13)
         })
-        
     }
     
     required init?(coder: NSCoder) {

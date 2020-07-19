@@ -76,7 +76,6 @@ class HeaderView: UIView {
             item.right.bottom.equalToSuperview().offset(-15)
             item.top.equalToSuperview().offset(14)
         })
-        
     }
     
     required init?(coder: NSCoder) {
