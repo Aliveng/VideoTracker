@@ -12,24 +12,10 @@ import SnapKit
 import AVFoundation
 import MMPlayerView
 
-struct Record {
-    
-    let avatar: UIImage
-    let title: String
-    let date: String
-    let video: UIImage
-    let isLiked: Bool
-    let favoriteNumber: Int
-    let viewsNumber: Int
-    let isBookmark: Bool
-    
-}
 
 enum CellModel {
-    case newRecord(model: NewsItem)
-    case record(model: Record)
+    case newsItem(model: NewsItem)
 }
-
 
 struct SectionModel {
     let items: [CellModel]
@@ -94,9 +80,9 @@ class NewsListViewController: UIViewController {
         setupPlayerLayer()
         
         viewModel.news
-            .subscribe { items in
-                print(items)
-                self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
+            .subscribe { [weak self] items in
+                self?.sections[0] = SectionModel(items: items.map { CellModel.newsItem(model: $0) })
+                self?.recordsTableView.reloadData()
         }
         
         viewModel.loadData()
@@ -114,7 +100,7 @@ class NewsListViewController: UIViewController {
             self.perform(#selector(self.startLoading), with: nil, afterDelay: 0.2)
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.updateByContentOffset()
             self?.startLoading()
         }
@@ -194,7 +180,7 @@ extension NewsListViewController: UITableViewDelegate {
         let cellModel = sections[indexPath.section]?.items[indexPath.row]
         
         switch cellModel {
-        case .record, .newRecord:
+        case .newsItem:
             return 368
         case .none:
             return 0
@@ -221,9 +207,7 @@ extension NewsListViewController: UITableViewDelegate {
         guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else { return }
         
         switch сellModel {
-        case .record:
-            ()
-        case let .newRecord(model):
+        case let .newsItem(model):
             playerLayer.thumbImageView.image = model.video.image
             playerLayer.set(url: model.video.videoUrl)
             playerLayer.resume()
@@ -256,38 +240,23 @@ extension NewsListViewController: UITableViewDataSource {
         return sections.count
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let сellModel = sections[indexPath.section]?.items[indexPath.row]
+        guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else {
+            return UITableViewCell()
+        }
         
         switch сellModel {
-        case let .newRecord(model: model):
+        case let .newsItem(model: model):
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
-                cell.model = model
                 cell.headerView.avatarImageView.image = model.avatar
                 cell.headerView.titleLabel.text = model.title
                 cell.headerView.dateLabel.text = model.publishDate.string
                 cell.playerView.imgView.image = model.video.image
                 cell.footerView.favoriteNumberLabel.text = model.likes.string
                 cell.footerView.viewersNumberLabel.text = model.views.string
+                cell.model = model
                 return cell
             }
-            
-        case let .record(model):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
-                cell.headerView.avatarImageView.image = model.avatar
-                cell.headerView.titleLabel.text = model.title
-                cell.headerView.dateLabel.text = model.date
-                cell.playerView.imgView.image = model.video
-                cell.footerView.favoriteNumberLabel.text = "\(model.favoriteNumber)"
-                cell.footerView.viewersNumberLabel.text = "\(model.viewsNumber)"
-                return cell
-            }
-        case .none:
-            return UITableViewCell()
         }
         
         return UITableViewCell()

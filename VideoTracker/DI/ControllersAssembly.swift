@@ -19,7 +19,7 @@ struct ControllersAssembly: Assembly {
         
         // TabBar контроллер
         container.register(UITabBarController.self) { _ in
-            let newsViewModel = NewsListViewModel(newsService: NewsMockService())
+            let newsViewModel = NewsListViewModel(newsService: NewsApiService())
             let newsListController = NewsListViewController(viewModel: newsViewModel)
             newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
             

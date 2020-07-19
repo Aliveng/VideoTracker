@@ -19,6 +19,6 @@ extension TimeInterval {
 
 
 protocol NewsService {
-    func getNewsItems(_ completion: (Result<[NewsItem], Error>) -> Void)
+    func getNewsItems(_ completion: @escaping (Result<[NewsItem], Error>) -> Void)
 }
 

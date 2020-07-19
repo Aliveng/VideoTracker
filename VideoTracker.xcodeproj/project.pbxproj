@@ -30,6 +30,7 @@
 		F1DA797924C4CC80002D3CA2 /* NewsMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA797824C4CC80002D3CA2 /* NewsMockService.swift */; };
 		F1DA797C24C4CD43002D3CA2 /* NewsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA797B24C4CD43002D3CA2 /* NewsApiService.swift */; };
 		F1DA797F24C4CE21002D3CA2 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA797E24C4CE21002D3CA2 /* K.swift */; };
+		F1DA798124C4E665002D3CA2 /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA798024C4E665002D3CA2 /* APIRequests.swift */; };
 		F1F1449124C44880002F9184 /* ControllersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1449024C44880002F9184 /* ControllersAssembly.swift */; };
 		F1F1449324C44A15002F9184 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1449224C44A15002F9184 /* AppCoordinator.swift */; };
 		F1F1449824C463FB002F9184 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1449724C463FB002F9184 /* PlayerView.swift */; };
@@ -72,6 +73,7 @@
 		F1DA797824C4CC80002D3CA2 /* NewsMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMockService.swift; sourceTree = "<group>"; };
 		F1DA797B24C4CD43002D3CA2 /* NewsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiService.swift; sourceTree = "<group>"; };
 		F1DA797E24C4CE21002D3CA2 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		F1DA798024C4E665002D3CA2 /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 		F1F1449024C44880002F9184 /* ControllersAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersAssembly.swift; sourceTree = "<group>"; };
 		F1F1449224C44A15002F9184 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F1F1449724C463FB002F9184 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				F1DA797B24C4CD43002D3CA2 /* NewsApiService.swift */,
+				F1DA798024C4E665002D3CA2 /* APIRequests.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				0FD4803424C1F7A500AE6517 /* RecordCell.swift in Sources */,
 				0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */,
 				0FD4803624C1F98900AE6517 /* HeaderView.swift in Sources */,
+				F1DA798124C4E665002D3CA2 /* APIRequests.swift in Sources */,
 				0F96A9D724C3514000A46E9F /* NewsListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
