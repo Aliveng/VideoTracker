@@ -39,6 +39,7 @@ class FooterView: UIView {
     private lazy var favoriteButton: UIButton = {
         let view = UIButton()
         view.isEnabled = true
+        view.tintColor = .black
         view.setImage(.favoriteEmpty, for: .normal)
         view.addTarget(self,
                        action: #selector(didTapFavorite),
@@ -100,10 +101,9 @@ class FooterView: UIView {
     
     @objc
     private func didTapFavorite() {
-        //  favoriteButton.tintColor = .red
-        favoriteButton.setImage(.favoriteFull, for: .normal)
-        let textInt = Int(favoriteNumberLabel.text ?? "")
-        favoriteNumberLabel.text = "\(textInt! + 1)"
-        print("Like")
+        favoriteButton.tintColor = .red
+        if let likesCount = Int(favoriteNumberLabel.text ?? "") {
+            favoriteNumberLabel.text = "\(likesCount + 1)"
+        }
     }
 }
