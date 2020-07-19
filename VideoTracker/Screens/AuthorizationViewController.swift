@@ -63,7 +63,8 @@ class AuthorizationViewController: UIViewController {
         super.loadView()
         
         view.backgroundColor = .orange
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(backgroundImgView)
         view.addSubview(titleLabel)
@@ -103,10 +104,11 @@ class AuthorizationViewController: UIViewController {
     @objc
     private func didTapAuthorization() {
         
-        let newsListController = VideoListViewController() //NewsListController()
+        let newsViewModel = NewsListViewModel(newsService: NewsService())
+        let newsListController = NewsListController(viewModel: newsViewModel)
         newsListController.tabBarItem = UITabBarItem.init(title: "Лента", image: .newsLine, tag: 0)
         
-        let categoriesViewController = CategoriesViewController()
+        let categoriesViewController = VideoListViewController()
         categoriesViewController.tabBarItem = UITabBarItem.init(title: "Категории", image: .categories, tag: 1)
         
         let chatViewController = ChatViewController()
@@ -119,10 +121,11 @@ class AuthorizationViewController: UIViewController {
         tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.tintColor = UIColor.black
         tabBarController.tabBar.unselectedItemTintColor = UIColor.unselectedColor
-        tabBarController.setViewControllers([newsListController,
-                                             categoriesViewController,
-                                             chatViewController,
-                                             settingsViewController], animated: true)
+        tabBarController.setViewControllers([UINavigationController(rootViewController: newsListController) ,
+                                             UINavigationController(rootViewController: categoriesViewController),
+                                             UINavigationController(rootViewController: chatViewController),
+                                             UINavigationController(rootViewController: settingsViewController)], animated: true)
+        
         
         navigationController?.pushViewController(tabBarController, animated: true)
         print("Кнопка Авторизоваться")

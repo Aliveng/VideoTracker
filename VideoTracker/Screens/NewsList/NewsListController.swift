@@ -8,16 +8,13 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
+import MMPlayerView
 
 
-enum RecordsModel {
-    case oneRecord
-    case twoRecord
-    case threeRecord
-}
 
 enum CellModel {
-    case newRecord(model: RecordsModel)
+    case newRecord(model: NewsItem)
 }
 
 struct SectionModel {
@@ -25,6 +22,20 @@ struct SectionModel {
 }
 
 class NewsListController: UIViewController {
+    
+    var offsetObservation: NSKeyValueObservation?
+    let coverView = CoverView()
+    
+    lazy var playerLayer: MMPlayerLayer = {
+        let playerLayer = MMPlayerLayer()
+        playerLayer.cacheType = .memory(count: 5)
+        playerLayer.coverFitType = .fitToPlayerView
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        playerLayer.replace(cover: coverView)
+        playerLayer.repeatWhenEnd = true
+        playerLayer.player?.isMuted = true
+        return playerLayer
+    }()
     
     lazy var recordsTableView: UITableView = {
         let view = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
@@ -39,16 +50,24 @@ class NewsListController: UIViewController {
     
     var sections: [Int: SectionModel] = [:]
     
+    private var viewModel: NewsListViewModel
+    
+    init(viewModel: NewsListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tabBarController?.navigationItem.title = "Лента"
-        //  title = "Лента"
+        title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        
-        navigationController?.navigationBar.barTintColor = UIColor.red
-        navigationController?.navigationBar.barStyle = .default
-        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+                
         view.addSubview(recordsTableView)
         
         recordsTableView.snp.makeConstraints({ item in
@@ -57,12 +76,99 @@ class NewsListController: UIViewController {
             item.bottom.equalToSuperview()
         })
         
-        sections[0] = SectionModel(items: [
-            .newRecord(model: .oneRecord),
-            .newRecord(model: .twoRecord),
-            .newRecord(model: .threeRecord)
-        ])
+        setupCollectionView()
+        setupPlayerLayer()
+        
+        viewModel.news.subscribe { items in
+            self.sections[0] = SectionModel(items: items.map { CellModel.newRecord(model: $0) })
+        }
     }
+    
+    private func setupCollectionView() {
+        offsetObservation = recordsTableView.observe(\.contentOffset, options: [.new]) { [weak self] (_, value) in
+            guard
+                let self = self,
+                self.presentedViewController == nil
+            else {
+                return
+            }
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            self.perform(#selector(self.startLoading), with: nil, afterDelay: 0.2)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.updateByContentOffset()
+            self?.startLoading()
+        }
+        
+    }
+    
+    private func setupPlayerLayer() {
+        navigationController?.mmPlayerTransition.push.pass(setting: { value in
+                   print(value)
+               })
+        
+        playerLayer.getStatusBlock { [weak self] (status) in
+            switch status {
+            case let .failed(error):
+                let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            case .ready:
+                print("Ready to Play")
+            case .playing:
+                print("Playing")
+            case .pause:
+                print("Pause")
+            case .end:
+                print("End")
+            default: break
+            }
+        }
+        
+        playerLayer.getOrientationChange { (status) in
+            print("Player OrientationChange \(status)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc
+    func startLoading() {
+        self.updateByContentOffset()
+        if self.presentedViewController != nil {
+            return
+        }
+        // start loading video
+        playerLayer.resume()
+    }
+    
+    fileprivate func updateByContentOffset() {
+        if playerLayer.isShrink {
+            return
+        }
+        
+        if
+            let path = findCurrentPath(),
+            self.presentedViewController == nil
+        {
+            updateCell(at: path)
+        }
+    }
+    
+    private func findCurrentPath() -> IndexPath? {
+        let point = CGPoint(x: recordsTableView.frame.width/2, y: recordsTableView.contentOffset.y + recordsTableView.frame.width/2)
+        return recordsTableView.indexPathForRow(at: point)
+    }
+    
+    private func findCurrentCell(path: IndexPath) -> UITableViewCell {
+        return recordsTableView.cellForRow(at: path)!
+    }
+
+    
 }
 
 extension NewsListController: UITableViewDelegate {
@@ -76,6 +182,48 @@ extension NewsListController: UITableViewDelegate {
             return 0
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async { [unowned self] in
+        if self.presentedViewController != nil || self.playerLayer.isShrink == true {
+            self.recordsTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+                self.updateDetail(at: indexPath)
+            } else {
+                self.presentDetail(at: indexPath)
+            }
+        }
+    }
+    
+    private func presentDetail(at indexPath: IndexPath) {
+        self.updateCell(at: indexPath)
+        playerLayer.resume()
+    }
+    
+     fileprivate func updateDetail(at indexPath: IndexPath) {
+            guard let сellModel = sections[indexPath.section]?.items[indexPath.row] else { return }
+    
+            switch сellModel {
+            case let .newRecord(model):
+                playerLayer.thumbImageView.image = model.video.image
+                playerLayer.set(url: model.video.videoUrl)
+                playerLayer.resume()
+            }
+    
+        }
+    
+    private func updateCell(at indexPath: IndexPath) {
+        if
+            let cell = recordsTableView.cellForRow(at: indexPath) as? RecordCell,
+            let playURL = cell.model?.video.videoUrl
+        {
+            // this thumb use when transition start and your video dosent start
+            playerLayer.thumbImageView.image = cell.playerView.imgView.image
+            // set video where to play
+            playerLayer.playView = cell.playerView.imgView
+            playerLayer.set(url: playURL)
+        }
+    }
+    
 }
 
 extension NewsListController: UITableViewDataSource {
@@ -111,25 +259,16 @@ extension NewsListController: UITableViewDataSource {
         let сellModel = sections[indexPath.section]?.items[indexPath.row]
         
         switch сellModel {
-        case let .newRecord(model: RecordsModel):
+        case let .newRecord(model: model):
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
-                switch RecordsModel {
-                case .oneRecord:
-                    cell.headerView.avatarImageView.image = .avatar1
-                    cell.headerView.titleLabel.text = "Заголовок записи"
-                    cell.headerView.dateLabel.text = "15 мая 2020"
-                    cell.videoImageView.image = .video1
-                case .twoRecord:
-                    cell.headerView.avatarImageView.image = .avatar2
-                    cell.headerView.titleLabel.text = "Заголовок записи"
-                    cell.headerView.dateLabel.text = "14 мая 2020"
-                    cell.videoImageView.image = .video2
-                case .threeRecord:
-                    cell.headerView.avatarImageView.image = .avatar3
-                    cell.headerView.titleLabel.text = "Заголовок записи"
-                    cell.headerView.dateLabel.text = "13 мая 2020"
-                    cell.videoImageView.image = .video3
-                }
+                cell.model = model
+                cell.headerView.avatarImageView.image = .avatar1
+                cell.headerView.titleLabel.text = model.title
+                cell.headerView.dateLabel.text = model.publishDate.string
+                cell.playerView.imgView.image = model.video.image
+                cell.footerView.favoriteNumberLabel.text = model.likes.string
+                cell.footerView.viewersNumberLabel.text = model.views.string
+                                
                 return cell
             }
         case .none:

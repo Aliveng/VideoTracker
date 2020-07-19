@@ -1,44 +1,33 @@
-//
-//  PlayerCell.swift
-//  MMPlayerView
-//
-//  Created by Millman YANG on 2017/8/23.
-//  Copyright © 2017年 CocoaPods. All rights reserved.
-//
-
 import UIKit
+import SnapKit
 
-struct DataObj {
+
+struct VideoItem {
     var image: UIImage
-    var play_Url: URL?
-    var title: String
-    var content: String
+    var videoUrl: URL?
 }
 
 class PlayerCell: UICollectionViewCell {
     
     static let id = "PlayerCell"
     
-    var data: DataObj? {
+    var data: VideoItem? {
         didSet {
-            self.imgView.image = data?.image
-            self.labTitle.text = data?.title
+            self.playerView.imgView.image = data?.image
         }
     }
     
-    lazy var imgView: UIImageView = UIImageView()
+    lazy var playerView: PlayerView = {
+        PlayerView()
+    }()
     
-    lazy var labTitle: UILabel = UILabel()
-    
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imgView)
-        addSubview(labTitle)
-        
-        imgView.snp.makeConstraints {
+        addSubview(playerView)
+
+        playerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -50,7 +39,36 @@ class PlayerCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.imgView.isHidden = false
+        self.playerView.imgView.isHidden = false
         data = nil
     }
 }
+
+
+final class PlayerView: UIView {
+    
+    lazy var imgView: UIImageView = UIImageView()
+    lazy var timeLabel: UILabel = UILabel()
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        addSubview(imgView)
+        addSubview(timeLabel)
+        
+        imgView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    private func setupConstraints() {}
+}
+

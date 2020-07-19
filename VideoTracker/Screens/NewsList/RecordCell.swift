@@ -14,16 +14,28 @@ class RecordCell: UITableViewCell {
     
     static let reuseId = "RecordCell"
     
+    var model: NewsItem?
+//    {
+//        didSet {
+//            self.playerView.imgView.image = data?.image
+//        }
+//    }
+    
     lazy var headerView: HeaderView = {
         let view = HeaderView()
         view.backgroundColor = .white
         return view
     }()
     
-    lazy var videoImageView: UIImageView = {
-        let view = UIImageView(image: .video1)
-        return view
+    lazy var playerView: PlayerView = {
+        let playerView = PlayerView()
+        return playerView
     }()
+    
+//    lazy var videoImageView: UIImageView = {
+//        let view = UIImageView(image: .video1)
+//        return view
+//    }()
     
     lazy var footerView: FooterView = {
         let view = FooterView()
@@ -37,7 +49,7 @@ class RecordCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .white
         addSubview(headerView)
-        addSubview(videoImageView)
+        addSubview(playerView)
         addSubview(footerView)
         
         headerView.snp.makeConstraints({ item in
@@ -47,7 +59,7 @@ class RecordCell: UITableViewCell {
             item.top.equalToSuperview()
         })
         
-        videoImageView.snp.makeConstraints({ item in
+        playerView.snp.makeConstraints({ item in
             item.height.equalTo(252)
             item.left.equalToSuperview()
             item.right.equalToSuperview()
@@ -58,7 +70,7 @@ class RecordCell: UITableViewCell {
             item.height.equalTo(53)
             item.left.equalToSuperview()
             item.right.equalToSuperview()
-            item.top.equalTo(videoImageView.snp.bottom)
+            item.top.equalTo(playerView.snp.bottom)
         })
         
     }
