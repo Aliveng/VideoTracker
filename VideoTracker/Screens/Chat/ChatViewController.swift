@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 //import MessageKit
 
+
 class ChatViewController: UIViewController {
     
     lazy var phraseOneView: UIView = {
@@ -21,7 +22,7 @@ class ChatViewController: UIViewController {
     private func phraseOneRoundedRectangle() {
         
         let rect = UIView(frame: .zero)
-        rect.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        rect.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         rect.clipsToBounds = true
         rect.layer.cornerRadius = 16
         rect.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -43,6 +44,16 @@ class ChatViewController: UIViewController {
         return view
     }()
     
+    lazy var timePhraseOne: UILabel = {
+        let view = UILabel()
+        view.text = "11:37"
+        view.textColor = .gray
+        view.textAlignment = .right
+        view.font = .primary(size: 10, weight: .regular)
+        view.numberOfLines = 0
+        return view
+    }()
+    
     lazy var phraseTwoView: UIView = {
         let view = UIView()
         return view
@@ -51,7 +62,7 @@ class ChatViewController: UIViewController {
     private func phraseTwoRoundedRectangle() {
         
         let rect = UIView(frame: .zero)
-        rect.backgroundColor = #colorLiteral(red: 0.9022923189, green: 0.7800231193, blue: 0.50581925, alpha: 1)
+        rect.backgroundColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 0.5529544454)
         rect.clipsToBounds = true
         rect.layer.cornerRadius = 16
         rect.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -65,10 +76,21 @@ class ChatViewController: UIViewController {
     
     lazy var textPhraseTwo: UILabel = {
         let view = UILabel()
-        view.text = "Привет! \n Как дела?"
+        view.text = "Привет!\nКак дела?"
         view.textColor = .black
         view.textAlignment = .left
         view.font = .primary(size: 12, weight: .regular)
+        view.numberOfLines = 0
+        return view
+    }()
+    
+    lazy var timePhraseTwo: UILabel = {
+        let view = UILabel()
+      //  view.text = "\(Date().addingTimeInterval(-.hour))"
+        view.text = "12:48"
+        view.textColor = .gray
+        view.textAlignment = .right
+        view.font = .primary(size: 10, weight: .regular)
         view.numberOfLines = 0
         return view
     }()
@@ -81,8 +103,10 @@ class ChatViewController: UIViewController {
         
         view.addSubview(phraseOneView)
         phraseOneView.addSubview(textPhraseOne)
+        phraseOneView.addSubview(timePhraseOne)
         view.addSubview(phraseTwoView)
         phraseTwoView.addSubview(textPhraseTwo)
+        phraseTwoView.addSubview(timePhraseTwo)
 
     }
     
@@ -94,6 +118,7 @@ class ChatViewController: UIViewController {
         
         phraseOneView.snp.makeConstraints({ item in
             item.height.equalTo(42)
+            item.width.equalTo(158)
             item.left.equalToSuperview().offset(17)
             item.bottom.equalToSuperview().offset(-106)
         })
@@ -105,8 +130,16 @@ class ChatViewController: UIViewController {
             item.top.equalToSuperview().offset(12)
         })
         
+        timePhraseOne.snp.makeConstraints({ item in
+            item.left.equalToSuperview()
+            item.right.equalToSuperview().offset(-16)
+            item.top.equalToSuperview().offset(22)
+            item.bottom.equalToSuperview().offset(-4)
+        })
+        
         phraseTwoView.snp.makeConstraints({ item in
             item.height.equalTo(52)
+            item.width.equalTo(158)
             item.right.equalToSuperview().offset(-17)
             item.bottom.equalToSuperview().offset(-20)
         })
@@ -116,6 +149,13 @@ class ChatViewController: UIViewController {
             item.left.equalToSuperview().offset(12)
             item.right.equalToSuperview().offset(-12)
             item.top.equalToSuperview().offset(12)
+        })
+        
+        timePhraseTwo.snp.makeConstraints({ item in
+            item.left.equalToSuperview()
+            item.right.equalToSuperview().offset(-16)
+            item.top.equalToSuperview().offset(37)
+            item.bottom.equalToSuperview().offset(-4)
         })
     }
 }

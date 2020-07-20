@@ -62,7 +62,6 @@ class FooterView: UIView {
     private lazy var likeButton: LikeButton = {
         let view = LikeButton()
         view.tintColor = .black
-        //        view.setImage(.favoriteEmpty, for: .normal)
         view.addTarget(self,
                        action: #selector(didTapFavorite),
                        for: .touchUpInside)
