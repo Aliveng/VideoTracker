@@ -1,20 +1,32 @@
 PODS:
+  - Alamofire (5.1.0)
   - Hero (1.5.0)
+  - MMPlayerView (6.0.2)
   - SnapKit (5.0.1)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
+  - Alamofire
   - Hero
+  - MMPlayerView
   - SnapKit
+  - Swinject
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Hero
+    - MMPlayerView
     - SnapKit
+    - Swinject
 
 SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  MMPlayerView: e28bace82369bcfbfbe29f9dcd30eeb641a46754
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 2fc37e0d1ea75bd8668ac8c2b3742f3eff6d3582
+PODFILE CHECKSUM: 093e1111c34667ae03b326bdae25ad1260a5cdc5
 
 COCOAPODS: 1.8.4
