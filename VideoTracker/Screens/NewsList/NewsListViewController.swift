@@ -60,13 +60,14 @@ class NewsListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 18)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
         
         view.addSubview(recordsTableView)
         
