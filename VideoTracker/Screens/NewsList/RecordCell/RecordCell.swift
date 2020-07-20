@@ -28,8 +28,6 @@ class RecordCell: UITableViewCell {
     
     lazy var playerView: PlayerView = {
         let playerView = PlayerView()
-        playerView.imgView.image = .video3
-        playerView.backgroundColor = .red
         return playerView
     }()
     
@@ -41,9 +39,15 @@ class RecordCell: UITableViewCell {
     
     private lazy var grayLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.7293313146, green: 0.7294581532, blue: 0.7293233275, alpha: 1)
+        view.backgroundColor = .background
         return view
     }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        playerView.imgView.image = nil
+    }
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

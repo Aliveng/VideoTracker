@@ -1,26 +1,17 @@
 //
-//  NewsService.swift
+//  NewsMockService.swift
 //  VideoTracker
 //
-//  Created by Кирилл Худяков on 18.07.2020.
+//  Created by Кирилл Худяков on 19.07.2020.
 //  Copyright © 2020 Татьяна Севостьянова. All rights reserved.
 //
 
-
-//enum NewsServiceError {
-//
-//}
 import Foundation
 
-extension TimeInterval {
-    static let hour: TimeInterval = 3600
-    static let day: TimeInterval = 3600 * 24
-}
 
-
-class NewsService {
+class NewsMockService: NewsService {
     
-    func getNewsItems(_ completion: (Result<[NewsItem], Error>) -> Void)  {
+    func getNewsItems(_ completion: @escaping (Result<[NewsItem], Error>) -> Void)  {
         completion(.success([
             .init(video: VideoItem.init(image: .video1, videoUrl: URL(string: "https://firebasestorage.googleapis.com/v0/b/pitchit-f0ab2.appspot.com/o/uploads%2Fproducts%2F3MQwiMjYXy5uKBo2ZlxX%2F1584561560.C0882799-AD01-44CB-8CF1-1A1751558752.mov?alt=media&token=1a944bef-b2b0-4037-a0ff-61a3c6f1d053")),
                   avatar: .avatar1,

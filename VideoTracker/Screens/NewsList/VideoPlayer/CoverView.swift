@@ -70,19 +70,17 @@ class CoverView: UIView, MMPlayerCoverViewProtocol {
             $0.left.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.height.equalTo(40)
-            $0.width.equalTo(80)
         }
-        
+
         totalLabel.snp.makeConstraints {
             $0.right.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.height.equalTo(40)
-            $0.width.equalTo(80)
         }
         
         progressSlider.snp.makeConstraints {
             $0.height.equalTo(40)
-            $0.left.equalTo(currentLabel.snp.right)
+            $0.leading.equalTo(currentLabel.snp.trailing)
             $0.right.equalTo(totalLabel.snp.left)
             $0.bottom.equalToSuperview()
         }

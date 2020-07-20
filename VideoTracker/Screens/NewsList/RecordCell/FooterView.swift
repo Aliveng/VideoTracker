@@ -66,7 +66,6 @@ class FooterView: UIView {
             item.width.equalTo(28)
             item.left.equalToSuperview().offset(13)
             item.top.equalToSuperview().offset(10)
-            item.bottom.equalToSuperview().offset(-13)
         })
 
         favoriteNumberLabel.snp.makeConstraints({ item in
@@ -79,7 +78,6 @@ class FooterView: UIView {
             item.width.equalTo(28)
             item.left.equalTo(favoriteNumberLabel.snp.right).offset(11)
             item.top.equalToSuperview().offset(10)
-            item.bottom.equalToSuperview().offset(-13)
         })
 
         viewersNumberLabel.snp.makeConstraints({ item in
@@ -90,7 +88,7 @@ class FooterView: UIView {
         bookmarkImageView.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
-            item.right.bottom.equalToSuperview().offset(-12)
+            item.right.equalToSuperview().offset(-12)
             item.top.equalToSuperview().offset(13)
         })
     }

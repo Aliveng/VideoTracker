@@ -18,14 +18,7 @@ class NewsListViewModel {
 
     init(newsService: NewsService) {
         self.newsService = newsService
-        newsService.getNewsItems { [weak self] result in
-                   switch result {
-                   case let .success(items):
-                       self?.news.value = items
-                   case let .failure(error):
-                       print("❌ \(error)")
-                   }
-               }
+
     }
     
     func loadData() {

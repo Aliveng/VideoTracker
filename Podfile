@@ -9,5 +9,6 @@ target 'VideoTracker' do
 
   pod 'MMPlayerView'
   pod 'Swinject'
+  pod 'Alamofire'
 
 end
