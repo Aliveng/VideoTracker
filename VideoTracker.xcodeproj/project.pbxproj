@@ -21,6 +21,7 @@
 		0F2B59C224C5BD4800DD3646 /* SimpleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C124C5BD4800DD3646 /* SimpleCell.swift */; };
 		0F2B59C424C5BD9500DD3646 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C324C5BD9500DD3646 /* SettingsViewController.swift */; };
 		0F2B59C624C5CBD900DD3646 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C524C5CBD900DD3646 /* LikeButton.swift */; };
+		0F2B59C824C5F08800DD3646 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C724C5F08800DD3646 /* Bookmark.swift */; };
 		0F2B6F3124C3029000926F69 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B6F3024C3029000926F69 /* ItemCell.swift */; };
 		0F96A9D724C3514000A46E9F /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96A9D624C3514000A46E9F /* NewsListViewController.swift */; };
 		0F96A9D924C362CA00A46E9F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96A9D824C362CA00A46E9F /* NewsListViewModel.swift */; };
@@ -64,6 +65,7 @@
 		0F2B59C124C5BD4800DD3646 /* SimpleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCell.swift; sourceTree = "<group>"; };
 		0F2B59C324C5BD9500DD3646 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0F2B59C524C5CBD900DD3646 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		0F2B59C724C5F08800DD3646 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		0F2B6F3024C3029000926F69 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		0F96A9D624C3514000A46E9F /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		0F96A9D824C362CA00A46E9F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				0FD4803524C1F98900AE6517 /* HeaderView.swift */,
 				0FD4803824C2086400AE6517 /* FooterView.swift */,
 				0F2B59C524C5CBD900DD3646 /* LikeButton.swift */,
+				0F2B59C724C5F08800DD3646 /* Bookmark.swift */,
 			);
 			path = RecordCell;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				F1F690C724C4446400A49318 /* Coordinator.swift in Sources */,
 				F1F690BB24C33A2900A49318 /* Variable.swift in Sources */,
 				F1F690B324C325F100A49318 /* CoverView.swift in Sources */,
+				0F2B59C824C5F08800DD3646 /* Bookmark.swift in Sources */,
 				0FD4803924C2086400AE6517 /* FooterView.swift in Sources */,
 				0F16F39E24C03CBE00EBAEBC /* AuthorizationViewController.swift in Sources */,
 				0F2B59C424C5BD9500DD3646 /* SettingsViewController.swift in Sources */,

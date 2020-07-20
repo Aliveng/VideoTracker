@@ -44,9 +44,13 @@ class FooterView: UIView {
                        for: .touchUpInside)
         return view
     }()
-    
-    private lazy var bookmarkImageView: UIImageView = {
-        let view = UIImageView(image: .bookmarkEmpty)
+
+    private lazy var bookmarkButton: Bookmark = {
+        let view = Bookmark()
+        view.tintColor = .black
+        view.addTarget(self,
+                       action: #selector(didTapBookmark),
+                       for: .touchUpInside)
         return view
     }()
     
@@ -57,7 +61,7 @@ class FooterView: UIView {
         addSubview(favoriteNumberLabel)
         addSubview(viewersImageView)
         addSubview(viewersNumberLabel)
-        addSubview(bookmarkImageView)
+        addSubview(bookmarkButton)
         
         likeButton.snp.makeConstraints({ item in
             item.height.equalTo(28)
@@ -83,7 +87,7 @@ class FooterView: UIView {
             item.centerY.equalTo(viewersImageView.snp.centerY)
         })
         
-        bookmarkImageView.snp.makeConstraints({ item in
+        bookmarkButton.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
             item.right.equalToSuperview().offset(-12)
@@ -106,5 +110,10 @@ class FooterView: UIView {
                 favoriteNumberLabel.text = "\(likesCount - 1)"
             }
         }
+    }
+    
+    @objc
+    private func didTapBookmark() {
+        
     }
 }
