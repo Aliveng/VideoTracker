@@ -8,29 +8,6 @@
 import UIKit
 import SnapKit
 
-class LikeButton: UIButton {
-    var isLiked: Bool = false
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setImage(.favoriteEmpty, for: .normal)
-        addTarget(self, action: #selector(didTap), for: .touchUpInside)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func didTap() {
-        isLiked = !isLiked
-        if isLiked {
-            tintColor = .red
-        } else {
-            tintColor = .black
-        }
-        print(isLiked)
-    }
-}
 
 class FooterView: UIView {
     
