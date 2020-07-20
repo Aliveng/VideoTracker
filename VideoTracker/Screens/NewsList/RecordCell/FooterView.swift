@@ -8,6 +8,29 @@
 import UIKit
 import SnapKit
 
+class LikeButton: UIButton {
+    var isLiked: Bool = false
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setImage(.favoriteEmpty, for: .normal)
+        addTarget(self, action: #selector(didTap), for: .touchUpInside)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func didTap() {
+        isLiked = !isLiked
+        if isLiked {
+            tintColor = .red
+        } else {
+            tintColor = .black
+        }
+        print(isLiked)
+    }
+}
 
 class FooterView: UIView {
     
@@ -36,11 +59,10 @@ class FooterView: UIView {
         return view
     }()
     
-    private lazy var favoriteButton: UIButton = {
-        let view = UIButton()
-        view.isEnabled = true
+    private lazy var likeButton: LikeButton = {
+        let view = LikeButton()
         view.tintColor = .black
-        view.setImage(.favoriteEmpty, for: .normal)
+        //        view.setImage(.favoriteEmpty, for: .normal)
         view.addTarget(self,
                        action: #selector(didTapFavorite),
                        for: .touchUpInside)
@@ -55,25 +77,25 @@ class FooterView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(favoriteButton)
+        addSubview(likeButton)
         addSubview(favoriteNumberLabel)
         addSubview(viewersImageView)
         addSubview(viewersNumberLabel)
         addSubview(bookmarkImageView)
         
-        favoriteButton.snp.makeConstraints({ item in
+        likeButton.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
             item.left.equalToSuperview().offset(13)
             item.top.equalToSuperview().offset(10)
             item.bottom.equalToSuperview().offset(-13)
         })
-
+        
         favoriteNumberLabel.snp.makeConstraints({ item in
-            item.left.equalTo(favoriteButton.snp.right).offset(4)
-            item.centerY.equalTo(favoriteButton.snp.centerY)
+            item.left.equalTo(likeButton.snp.right).offset(4)
+            item.centerY.equalTo(likeButton.snp.centerY)
         })
-
+        
         viewersImageView.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
@@ -81,12 +103,12 @@ class FooterView: UIView {
             item.top.equalToSuperview().offset(10)
             item.bottom.equalToSuperview().offset(-13)
         })
-
+        
         viewersNumberLabel.snp.makeConstraints({ item in
             item.left.equalTo(viewersImageView.snp.right).offset(8)
             item.centerY.equalTo(viewersImageView.snp.centerY)
         })
-
+        
         bookmarkImageView.snp.makeConstraints({ item in
             item.height.equalTo(28)
             item.width.equalTo(28)
@@ -101,9 +123,14 @@ class FooterView: UIView {
     
     @objc
     private func didTapFavorite() {
-        favoriteButton.tintColor = .red
-        if let likesCount = Int(favoriteNumberLabel.text ?? "") {
-            favoriteNumberLabel.text = "\(likesCount + 1)"
+        if likeButton.isLiked {
+            if let likesCount = Int(favoriteNumberLabel.text ?? "") {
+                favoriteNumberLabel.text = "\(likesCount + 1)"
+            }
+        } else {
+            if let likesCount = Int(favoriteNumberLabel.text ?? "") {
+                favoriteNumberLabel.text = "\(likesCount - 1)"
+            }
         }
     }
 }
