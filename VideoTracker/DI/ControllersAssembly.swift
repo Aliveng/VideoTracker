@@ -17,6 +17,11 @@ struct ControllersAssembly: Assembly {
             return AuthorizationViewController()
         }
         
+        // Конроллер новость - детально 
+        container.register(NewsDetailViewController.self) { _ in
+            return NewsDetailViewController()
+        }
+        
         // TabBar контроллер
         container.register(UITabBarController.self) { _ in
             let newsViewModel = NewsListViewModel(newsService: NewsApiService())

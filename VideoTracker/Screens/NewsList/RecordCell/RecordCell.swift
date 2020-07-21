@@ -48,6 +48,14 @@ class RecordCell: UITableViewCell {
         playerView.imgView.image = nil
     }
     
+    func configure(model: NewsItem){
+        headerView.avatarImageView.image = model.avatar
+        headerView.titleLabel.text = model.title
+        headerView.dateLabel.text = model.publishDate.string
+        playerView.imgView.image = model.video.image
+        footerView.favoriteNumberLabel.text = model.likes.string
+        footerView.viewersNumberLabel.text = model.views.string
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -23,6 +23,8 @@
 		0F2B59C624C5CBD900DD3646 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C524C5CBD900DD3646 /* LikeButton.swift */; };
 		0F2B59C824C5F08800DD3646 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B59C724C5F08800DD3646 /* Bookmark.swift */; };
 		0F2B6F3124C3029000926F69 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B6F3024C3029000926F69 /* ItemCell.swift */; };
+		0F56630824C6ECE500153176 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56630724C6ECE500153176 /* NewsDetailViewController.swift */; };
+		0F56630B24C6EF7400153176 /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56630A24C6EF7400153176 /* NewsCoordinator.swift */; };
 		0F96A9D724C3514000A46E9F /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96A9D624C3514000A46E9F /* NewsListViewController.swift */; };
 		0F96A9D924C362CA00A46E9F /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96A9D824C362CA00A46E9F /* NewsListViewModel.swift */; };
 		0F96A9DB24C3903600A46E9F /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96A9DA24C3903600A46E9F /* CategoriesViewModel.swift */; };
@@ -67,6 +69,8 @@
 		0F2B59C524C5CBD900DD3646 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		0F2B59C724C5F08800DD3646 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		0F2B6F3024C3029000926F69 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		0F56630724C6ECE500153176 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		0F56630A24C6EF7400153176 /* NewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
 		0F96A9D624C3514000A46E9F /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		0F96A9D824C362CA00A46E9F /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		0F96A9DA24C3903600A46E9F /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				0F16F39924C03CBE00EBAEBC /* AppDelegate.swift */,
 				F1F690C624C4446400A49318 /* Coordinator.swift */,
 				F1F1449224C44A15002F9184 /* AppCoordinator.swift */,
+				0F56630A24C6EF7400153176 /* NewsCoordinator.swift */,
 				F1F1448F24C44868002F9184 /* DI */,
 				F1F6909E24C1D70700A49318 /* Screens */,
 				0F16F3A224C03CBF00EBAEBC /* Assets.xcassets */,
@@ -168,9 +173,18 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		0F56630924C6ED0F00153176 /* NewsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0F56630724C6ECE500153176 /* NewsDetailViewController.swift */,
+			);
+			path = NewsDetail;
+			sourceTree = "<group>";
+		};
 		0FD4803724C203B900AE6517 /* NewsList */ = {
 			isa = PBXGroup;
 			children = (
+				0F56630924C6ED0F00153176 /* NewsDetail */,
 				F1DA797A24C4CCBC002D3CA2 /* Services */,
 				F1F1449B24C46667002F9184 /* RecordCell */,
 				F1F1449624C463E3002F9184 /* VideoPlayer */,
@@ -267,11 +281,11 @@
 		F1F6909E24C1D70700A49318 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				0FD4803724C203B900AE6517 /* NewsList */,
-				F1F1449524C44A2B002F9184 /* Settings */,
-				F1F1449424C44A1F002F9184 /* Chat */,
 				F1F690C524C4444D00A49318 /* Auth */,
+				0FD4803724C203B900AE6517 /* NewsList */,
 				0F2B6F3224C30D9000926F69 /* Categories */,
+				F1F1449424C44A1F002F9184 /* Chat */,
+				F1F1449524C44A2B002F9184 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -457,6 +471,8 @@
 				F1DA797C24C4CD43002D3CA2 /* NewsApiService.swift in Sources */,
 				0F2B59C624C5CBD900DD3646 /* LikeButton.swift in Sources */,
 				F1F6909D24C1D46F00A49318 /* Fonts.swift in Sources */,
+				0F56630824C6ECE500153176 /* NewsDetailViewController.swift in Sources */,
+				0F56630B24C6EF7400153176 /* NewsCoordinator.swift in Sources */,
 				0F16F3BD24C099AD00EBAEBC /* ChatViewController.swift in Sources */,
 				0FD4803424C1F7A500AE6517 /* RecordCell.swift in Sources */,
 				0F16F3B024C05DDB00EBAEBC /* UIColor+extensions.swift in Sources */,

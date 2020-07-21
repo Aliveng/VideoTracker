@@ -69,7 +69,7 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Категории"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 18)!]
+        let attributes = [NSAttributedString.Key.font: UIFont.primary(size: 18, weight: .bold)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
           itemsCollectionView.snp.makeConstraints({ item in

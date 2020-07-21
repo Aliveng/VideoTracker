@@ -66,7 +66,7 @@ class NewsListViewController: UIViewController {
         title = "Лента"
         view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 18)!]
+        let attributes = [NSAttributedString.Key.font: UIFont.primary(size: 18, weight: .bold)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
         view.addSubview(recordsTableView)
@@ -249,13 +249,7 @@ extension NewsListViewController: UITableViewDataSource {
         switch сellModel {
         case let .newsItem(model: model):
             if let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.reuseId) as? RecordCell {
-                cell.headerView.avatarImageView.image = model.avatar
-                cell.headerView.titleLabel.text = model.title
-                cell.headerView.dateLabel.text = model.publishDate.string
-                cell.playerView.imgView.image = model.video.image
-                cell.footerView.favoriteNumberLabel.text = model.likes.string
-                cell.footerView.viewersNumberLabel.text = model.views.string
-                cell.model = model
+                cell.configure(model: model)
                 return cell
             }
         }

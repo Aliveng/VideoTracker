@@ -52,7 +52,7 @@ class SettingsViewController: UIViewController {
         title = "Настройки"
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 18)!]
+        let attributes = [NSAttributedString.Key.font: UIFont.primary(size: 18, weight: .bold)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
         settingsTableView.snp.makeConstraints({ item in

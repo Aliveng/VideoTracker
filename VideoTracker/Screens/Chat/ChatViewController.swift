@@ -115,7 +115,7 @@ class ChatViewController: UIViewController {
         
         title = "Чат"
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 18)!]
+        let attributes = [NSAttributedString.Key.font: UIFont.primary(size: 18, weight: .bold)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
         phraseOneView.snp.makeConstraints({ item in

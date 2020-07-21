@@ -11,6 +11,7 @@ import Swinject
 
 enum AppCoordinatorWays {
     case main
+    case news
 }
 
 protocol AppCoordinatorDelegate {
@@ -23,6 +24,7 @@ class AppCoordinator: NavigationCoordinator {
     
     var assemblyContainer: Container
     var navigationController: UINavigationController
+    var childCoordinators: [AppCoordinatorWays: Coordinator] = [:]
     
     required init(window: UIWindow?, assemblyContainer: Container) {
         self.navigationController = UINavigationController()

@@ -62,9 +62,7 @@ class AuthorizationViewController: UIViewController {
         return view
     }()
     
-    
     init() {
-        
         super.init(nibName: nil, bundle: nil)
     }
     
