@@ -17,13 +17,25 @@ class HeaderView: UIView {
         return view
     }()
     
-    lazy var titleLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Заголовок записи"
-        view.textColor = .black
-        view.font = .primary(size: 14, weight: .bold)
-        view.textAlignment = .left
-        view.numberOfLines = 0
+//    lazy var titleLabel: UILabel = {
+//        let view = UILabel()
+//        view.text = "Заголовок записи"
+//        view.textColor = .black
+//        view.font = .primary(size: 14, weight: .bold)
+//        view.textAlignment = .left
+//        view.numberOfLines = 0
+//        return view
+//    }()
+    
+    lazy var titleButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .clear
+        view.setTitle("Заголовок записи", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.titleLabel?.numberOfLines = 0
+    //    view.addTarget(self,
+   //                    action: #selector(didTapTitle),
+   //                    for: .touchUpInside)
         return view
     }()
     
@@ -46,7 +58,8 @@ class HeaderView: UIView {
         super.init(frame: frame)
         
         addSubview(avatarImageView)
-        addSubview(titleLabel)
+      //  addSubview(titleLabel)
+        addSubview(titleButton)
         addSubview(dateLabel)
         addSubview(shareImageView)
         
@@ -58,7 +71,8 @@ class HeaderView: UIView {
             item.bottom.equalToSuperview().offset(-8)
         })
         
-        titleLabel.snp.makeConstraints({ item in
+       // titleLabel.snp.makeConstraints({ item in
+        titleButton.snp.makeConstraints({ item in
             item.left.equalTo(avatarImageView.snp.right).offset(18)
             item.top.equalToSuperview().offset(19)
             item.bottom.equalToSuperview().offset(-22)
@@ -66,7 +80,8 @@ class HeaderView: UIView {
         
         dateLabel.snp.makeConstraints({ item in
             item.left.equalTo(avatarImageView.snp.right).offset(18)
-            item.top.equalTo(titleLabel.snp.bottom)
+      //      item.top.equalTo(titleLabel.snp.bottom)
+             item.top.equalTo(titleButton.snp.bottom)
             item.bottom.equalToSuperview().offset(-6)
         })
         
@@ -81,4 +96,11 @@ class HeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//    @objc
+//    private func didTapTitle() {
+//        let controller = NewsDetailViewController()
+//   //     navigationController?.pushViewController(controller, animated: true)
+//    }
+
 }

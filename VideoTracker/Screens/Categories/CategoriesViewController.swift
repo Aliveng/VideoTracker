@@ -34,21 +34,6 @@ class CategoriesViewController: UIViewController {
         return view
     }()
     
-//    let listImages: [Item] = [
-//        Item(image: .item1, name: "BMV"),
-//        Item(image: .item4, name: "Ferrari"),
-//        Item(image: .item2, name: "Audio"),
-//        Item(image: .item5, name: "Lexus"),
-//        Item(image: .item3, name: "Mercedes"),
-//        Item(image: .item6, name: "Lamborgini"),
-//        Item(image: .item1, name: "BMV"),
-//        Item(image: .item4, name: "Ferrari"),
-//        Item(image: .item2, name: "Audio"),
-//        Item(image: .item5, name: "Lexus"),
-//        Item(image: .item3, name: "Mercedes"),
-//        Item(image: .item6, name: "Lamborgini")
-//    ]
-    
     init(viewModel: CategoriesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

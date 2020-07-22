@@ -50,7 +50,8 @@ class RecordCell: UITableViewCell {
     
     func configure(model: NewsItem){
         headerView.avatarImageView.image = model.avatar
-        headerView.titleLabel.text = model.title
+      //  headerView.titleLabel.text = model.title
+        headerView.titleButton.titleLabel?.text = model.title
         headerView.dateLabel.text = model.publishDate.string
         playerView.imgView.image = model.video.image
         footerView.favoriteNumberLabel.text = model.likes.string

@@ -18,9 +18,9 @@ struct ControllersAssembly: Assembly {
         }
         
         // Конроллер новость - детально 
-        container.register(NewsDetailViewController.self) { _ in
-            return NewsDetailViewController()
-        }
+//        container.register(NewsDetailViewController.self) { _ in
+//            return NewsDetailViewController(viewModel: <#T##NewsDetailViewModel#>)
+//        }
         
         // TabBar контроллер
         container.register(UITabBarController.self) { _ in

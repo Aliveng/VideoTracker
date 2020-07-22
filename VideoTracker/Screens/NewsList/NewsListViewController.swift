@@ -189,14 +189,18 @@ extension NewsListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DispatchQueue.main.async { [unowned self] in
-            if self.presentedViewController != nil || self.playerLayer.isShrink == true {
-                self.recordsTableView.scrollToRow(at: indexPath, at: .middle, animated: true)
-                self.updateDetail(at: indexPath)
-            } else {
-                self.presentDetail(at: indexPath)
-            }
+
+      let cellModel = sections[indexPath.section]?.items[indexPath.row]
+        
+        switch cellModel {
+        case let .newsItem(model: newsItem):
+            let viewModel = NewsDetailViewModel.init(newsItem: newsItem)
+            let controller = NewsDetailViewController.init(viewModel: viewModel)
+            navigationController?.pushViewController(controller, animated: true)
+        default:
+            ()
         }
+        
     }
     
     private func presentDetail(at indexPath: IndexPath) {
